@@ -7,10 +7,17 @@
 </ion-header>
 
 <ion-content padding>
+  
   <h3>Areas</h3>
-  <ion-list inset>
-    <button ion-item *ngFor="let area of areas" (click)="goToArea(area.id)">
-    {{ area.name }}
-    </button>
-  </ion-list>
+
+  <ion-card *ngFor="let area of areas" (click)="goToArea(area.id)">
+    <ion-card-header>
+      {{ area.name }}
+    </ion-card-header>
+
+    <ion-card-content>
+      Area Info
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

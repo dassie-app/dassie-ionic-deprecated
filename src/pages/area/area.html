@@ -8,7 +8,6 @@
 
 <ion-content padding>
   <ion-card>
-
     <ion-card-header>
       {{ area.name }}
     </ion-card-header>
@@ -16,12 +15,18 @@
     <ion-card-content>
       {{ area.description }}
     </ion-card-content>
-
   </ion-card>
+
   <h3>Crags in {{area.name}}</h3>
-  <ion-list inset>
-    <button ion-item *ngFor="let crag of crags" (click)="goToCrag(crag.id)">
-    {{ crag.name }}
-    </button>
-  </ion-list>
+
+  <ion-card *ngFor="let crag of crags" (click)="goToCrag(crag.id)">
+    <ion-card-header>
+      {{ crag.name }}
+    </ion-card-header>
+
+    <ion-card-content>
+      Crag Info
+    </ion-card-content>
+  </ion-card>
+  
 </ion-content>
