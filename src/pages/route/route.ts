@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the RoutePage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { ApiService } from '../../app/api/api.service';
+
 @IonicPage()
 @Component({
   selector: 'page-route',
@@ -14,11 +10,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RoutePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  routeId;
+  route;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RoutePage');
+  constructor(public navCtrl: NavController, public navParams: NavParams, private apiService: ApiService) {
+    this.routeId = this.navParams.get('id');
+    this.route = this.apiService.getRouteById(this.routeId);
   }
 
 }
