@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the AreaPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { ApiService } from '../../app/api/api.service';
+
+import { CragPage } from '../crag/crag';
+
 @IonicPage()
 @Component({
   selector: 'page-area',
@@ -14,11 +12,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AreaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  areaId;
+  area;
+  crags;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private apiService: ApiService) {
+    this.areaId = this.navParams.get('id');
+    this.area = this.apiService.getAreaById(this.areaId);
+    this.crags = this.apiService.getCragsByArea(this.areaId);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AreaPage');
+  goToCrag(id: number) {
+     this.navCtrl.push(CragPage, {
+       id: id
+    });
   }
 
 }
