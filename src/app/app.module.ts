@@ -10,6 +10,9 @@ import { AreaPage } from '../pages/area/area';
 import { CragPage } from '../pages/crag/crag';
 import { RoutePage } from '../pages/route/route';
 
+import { MockDataService } from './api/mock-data.service';
+import { ApiService } from './api/api.service';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -33,6 +36,8 @@ import { RoutePage } from '../pages/route/route';
   providers: [
     StatusBar,
     SplashScreen,
+    ApiService,
+    MockDataService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
