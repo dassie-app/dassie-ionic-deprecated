@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the CragPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { ApiService } from '../../app/api/api.service';
+
+import { RoutePage } from '../route/route';
+
 @IonicPage()
 @Component({
   selector: 'page-crag',
@@ -14,11 +12,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CragPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  cragId;
+  crag;
+  routes;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private apiService: ApiService) {
+    this.cragId = this.navParams.get('id');
+    this.crag = this.apiService.getCragById(this.cragId);
+    this.routes = this.apiService.getRoutesByCrag(this.cragId);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CragPage');
+  goToRoute(id: number) {
+     this.navCtrl.push(RoutePage, {
+       id: id
+    });
   }
 
 }

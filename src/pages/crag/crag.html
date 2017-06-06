@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      {{area.name}}
+      {{crag.name}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -10,18 +10,18 @@
   <ion-card>
 
     <ion-card-header>
-      {{ area.name }}
+      {{ crag.name }}
     </ion-card-header>
 
     <ion-card-content>
-      {{ area.description }}
+      {{ crag.description }}
     </ion-card-content>
 
   </ion-card>
-  <h3>Crags in {{area.name}}</h3>
+  <h3>Routes at {{crag.name}}</h3>
   <ion-list inset>
-    <button ion-item *ngFor="let crag of crags" (click)="goToCrag(crag.id)">
-    {{ crag.name }}
+    <button ion-item *ngFor="let route of routes" (click)="goToRoute(crag.id)">
+    {{ route.name }}
     </button>
   </ion-list>
 </ion-content>
