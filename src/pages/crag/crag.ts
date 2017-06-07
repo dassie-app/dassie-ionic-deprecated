@@ -5,6 +5,8 @@ import { ApiService } from '../../app/api/api.service';
 
 import { RoutePage } from '../route/route';
 
+import _ from 'lodash';
+
 @IonicPage()
 @Component({
   selector: 'page-crag',
@@ -15,6 +17,7 @@ export class CragPage {
   cragId;
   crag;
   routes;
+  routeOrder = 'Left to Right';
 
   constructor(
     public navCtrl: NavController,
@@ -46,36 +49,61 @@ export class CragPage {
         {
           text: 'Left to Right',
           handler: ()=>{
-
+            this.orderRoutes('leftRight');
           }
         },
         {
           text: 'Right to Left',
           handler: ()=>{
-            
+            this.orderRoutes('rightLeft');
           }
         },
         {
-          text: 'Grade: Low to High',
+          text: 'Grade - Low to High',
           handler: ()=>{
-            
+            this.orderRoutes('lowHigh');
           }
         },
         {
-          text: 'Grade: High to Low',
+          text: 'Grade - High to Low',
           handler: ()=>{
-            
+           this.orderRoutes('highLow');
           }
         },
         {
           text: 'Star Rating',
           handler: ()=>{
-            
+            this.orderRoutes('stars');
           }
         }
       ]
     });
     actionSheet.present();
+  }
+
+  orderRoutes(order){
+    switch(order){
+      case 'leftRight':
+        this.routes = _.orderBy(this.routes,['order'], ['asc']);
+        this.routeOrder = 'Left to Right';
+        break;
+      case 'rightLeft':
+        this.routes = _.orderBy(this.routes,['order'], ['desc']);
+        this.routeOrder = 'Right to Left';
+        break;
+      case 'lowHigh':
+        this.routes = _.orderBy(this.routes,['grade'], ['asc']);
+        this.routeOrder = 'Grade - Low to High';
+        break;
+      case 'highLow':
+        this.routes = _.orderBy(this.routes,['grade'], ['desc']);
+        this.routeOrder = 'Grade - High to Low';
+        break;
+      case 'stars':
+        this.routes = _.orderBy(this.routes,['stars'], ['desc']);
+        this.routeOrder = 'Star Rating';
+        break;
+    }
   }
 
 }

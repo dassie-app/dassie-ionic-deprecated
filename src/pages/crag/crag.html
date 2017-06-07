@@ -18,14 +18,9 @@
     </ion-card-content>
   </ion-card>
 
-  <h3>Routes at {{crag.name}}</h3>
-  <ion-grid>
-    <ion-row>
-      <ion-buttons end>
-        <button ion-button><ion-icon name="settings"></ion-icon></button>
-      </ion-buttons>
-    </ion-row>
-  </ion-grid>
+  <h3>Routes at {{ crag.name }}</h3>
+  <h6>Order: {{ routeOrder }}</h6>
+
   <ion-card *ngFor="let route of routes" (click)="goToRoute(route.id)">
     <ion-card-header class="route-card-header">
       <span>{{ route.name }}</span>
