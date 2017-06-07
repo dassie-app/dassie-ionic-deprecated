@@ -263,4 +263,8 @@ export class MockDataService {
     return countries;
   }
 
+  getTicklistedRoutes(){
+    return _.filter(this.mockData.routes, {'ticklisted': true});
+  }
+
 }

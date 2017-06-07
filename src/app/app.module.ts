@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { AreaPage } from '../pages/area/area';
 import { CragPage } from '../pages/crag/crag';
 import { RoutePage } from '../pages/route/route';
+import { TicklistPage} from '../pages/tick-list/tick-list';
 
 import { MockDataService } from './api/mock-data.service';
 import { ApiService } from './api/api.service';
@@ -20,7 +21,8 @@ import { ApiService } from './api/api.service';
     HomePage,
     AreaPage,
     CragPage,
-    RoutePage
+    RoutePage,
+    TicklistPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { ApiService } from './api/api.service';
     HomePage,
     AreaPage,
     CragPage,
-    RoutePage
+    RoutePage,
+    TicklistPage
   ],
   providers: [
     StatusBar,

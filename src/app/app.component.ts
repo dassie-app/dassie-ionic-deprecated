@@ -4,6 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { TicklistPage} from '../pages/tick-list/tick-list';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -23,6 +25,10 @@ export class MyApp {
     this.nav.push(HomePage).then(
       ()=>{this.nav.setRoot(HomePage)}
     );
+  }
+
+  goToTicklist(){
+    this.nav.push(TicklistPage);
   }
 }
 
