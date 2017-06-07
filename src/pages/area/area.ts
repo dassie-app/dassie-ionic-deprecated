@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 import { ApiService } from '../../app/api/api.service';
 
 import { CragPage } from '../crag/crag';
 
-@IonicPage()
 @Component({
   selector: 'page-area',
   templateUrl: 'area.html',

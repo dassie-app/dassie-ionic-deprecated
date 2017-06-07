@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { DeviceFeedback } from '@ionic-native/device-feedback';
 
 import { ApiService } from '../../app/api/api.service';
 
@@ -7,7 +8,6 @@ import { RoutePage } from '../route/route';
 
 import _ from 'lodash';
 
-@IonicPage()
 @Component({
   selector: 'page-crag',
   templateUrl: 'crag.html',
@@ -23,7 +23,8 @@ export class CragPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private apiService: ApiService,
-    private actionSheetCtrl: ActionSheetController
+    private actionSheetCtrl: ActionSheetController,
+    private deviceFeedback: DeviceFeedback
   ){
     this.cragId = this.navParams.get('id');
     this.crag = this.apiService.getCragById(this.cragId);
@@ -43,6 +44,7 @@ export class CragPage {
   }
 
   openOrderActionSheet(){
+    this.deviceFeedback.haptic(1);
     let actionSheet = this.actionSheetCtrl.create({
       title: "Order Routes by",
       buttons: [
@@ -82,6 +84,7 @@ export class CragPage {
   }
 
   orderRoutes(order){
+    this.deviceFeedback.haptic(1);
     switch(order){
       case 'leftRight':
         this.routes = _.orderBy(this.routes,['order'], ['asc']);
@@ -107,6 +110,7 @@ export class CragPage {
   }
 
   openRouteActionSheet(route){
+    this.deviceFeedback.haptic(3);
     let buttons = [];
     if (route.sent){
       buttons.push(
@@ -155,19 +159,23 @@ export class CragPage {
   }
 
   markRouteAsSent(route) {
+    this.deviceFeedback.haptic(1);
     route.sent = true;
     route.ticklisted = false;
   }
 
   markRouteAsNotSent(route) {
+    this.deviceFeedback.haptic(1);
     route.sent = false;
   }
 
   addRouteToTicklist(route) {
+    this.deviceFeedback.haptic(1);
     route.ticklisted = true;
   }
 
   removeRouteFromTicklist(route) {
+    this.deviceFeedback.haptic(1);
     route.ticklisted = false;
   }
 
