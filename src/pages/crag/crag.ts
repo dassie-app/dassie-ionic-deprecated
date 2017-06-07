@@ -27,63 +27,63 @@ export class CragPage {
     private apiService: ApiService,
     private actionSheetCtrl: ActionSheetController,
     private deviceFeedback: DeviceFeedback
-  ){
+  ) {
     this.cragId = this.navParams.get('id');
     this.crag = this.apiService.getCragById(this.cragId);
     this.area = this.apiService.getAreaById(this.crag.area);
     this.routes = this.apiService.getRoutesByCrag(this.cragId);
-    this.routes.map(route=>{
+    this.routes.map(route => {
       route.starArray = [];
-      for (let i = 0; i < route.stars; i++){
+      for (let i = 0; i < route.stars; i++) {
         route.starArray.push(0);
       }
     })
   }
 
   goToRoute(id: number) {
-     this.navCtrl.push(RoutePage, {
-       id: id
-    });
-  }
-  
-  goToArea(id: number) {
-     this.navCtrl.push(AreaPage, {
-       id: id
+    this.navCtrl.push(RoutePage, {
+      id: id
     });
   }
 
-  openOrderActionSheet(){
+  goToArea(id: number) {
+    this.navCtrl.push(AreaPage, {
+      id: id
+    });
+  }
+
+  openOrderActionSheet() {
     this.deviceFeedback.haptic(1);
     let actionSheet = this.actionSheetCtrl.create({
       title: "Order Routes by",
       buttons: [
         {
           text: 'Left to Right',
-          handler: ()=>{
+          handler: () => {
             this.orderRoutes('leftRight');
           }
         },
         {
           text: 'Right to Left',
-          handler: ()=>{
+          handler: () => {
             this.orderRoutes('rightLeft');
           }
         },
         {
           text: 'Grade - Low to High',
-          handler: ()=>{
+          handler: () => {
             this.orderRoutes('lowHigh');
           }
         },
         {
           text: 'Grade - High to Low',
-          handler: ()=>{
-           this.orderRoutes('highLow');
+          handler: () => {
+            this.orderRoutes('highLow');
           }
         },
         {
           text: 'Star Rating',
-          handler: ()=>{
+          handler: () => {
             this.orderRoutes('stars');
           }
         }
@@ -92,40 +92,40 @@ export class CragPage {
     actionSheet.present();
   }
 
-  orderRoutes(order){
+  orderRoutes(order) {
     this.deviceFeedback.haptic(1);
-    switch(order){
+    switch (order) {
       case 'leftRight':
-        this.routes = _.orderBy(this.routes,['order'], ['asc']);
+        this.routes = _.orderBy(this.routes, ['order'], ['asc']);
         this.routeOrder = 'Left to Right';
         break;
       case 'rightLeft':
-        this.routes = _.orderBy(this.routes,['order'], ['desc']);
+        this.routes = _.orderBy(this.routes, ['order'], ['desc']);
         this.routeOrder = 'Right to Left';
         break;
       case 'lowHigh':
-        this.routes = _.orderBy(this.routes,['grade'], ['asc']);
+        this.routes = _.orderBy(this.routes, ['grade'], ['asc']);
         this.routeOrder = 'Grade - Low to High';
         break;
       case 'highLow':
-        this.routes = _.orderBy(this.routes,['grade'], ['desc']);
+        this.routes = _.orderBy(this.routes, ['grade'], ['desc']);
         this.routeOrder = 'Grade - High to Low';
         break;
       case 'stars':
-        this.routes = _.orderBy(this.routes,['stars'], ['desc']);
+        this.routes = _.orderBy(this.routes, ['stars'], ['desc']);
         this.routeOrder = 'Star Rating';
         break;
     }
   }
 
-  openRouteActionSheet(route){
+  openRouteActionSheet(route) {
     this.deviceFeedback.haptic(3);
     let buttons = [];
-    if (route.sent){
+    if (route.sent) {
       buttons.push(
         {
           text: 'Mark as Not Sent',
-          handler: ()=>{
+          handler: () => {
             this.markRouteAsNotSent(route);
           }
         }
@@ -134,30 +134,30 @@ export class CragPage {
       buttons.push(
         {
           text: 'Mark as Sent',
-          handler: ()=>{
+          handler: () => {
             this.markRouteAsSent(route);
           }
         }
       );
-    }
-    if (route.ticklisted){
-      buttons.push(
-        {
-          text: 'Remove from Ticklist',
-          handler: ()=>{
-            this.removeRouteFromTicklist(route);
+      if (route.ticklisted) {
+        buttons.push(
+          {
+            text: 'Remove from Ticklist',
+            handler: () => {
+              this.removeRouteFromTicklist(route);
+            }
           }
-        }
-      );
-    } else {
-      buttons.push(
-        {
-          text: 'Add to Ticklist',
-          handler: ()=>{
-            this.addRouteToTicklist(route);
+        );
+      } else {
+        buttons.push(
+          {
+            text: 'Add to Ticklist',
+            handler: () => {
+              this.addRouteToTicklist(route);
+            }
           }
-        }
-      );
+        );
+      }
     }
 
     let actionSheet = this.actionSheetCtrl.create({
