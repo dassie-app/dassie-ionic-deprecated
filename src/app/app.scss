@@ -15,7 +15,16 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-.route-sent {
-  background-color:  #00bcd4; //secondary
+$green: #4caf50;
+$secondary: #00bcd4;
 
+.route-sent {
+  background-color:  $green; //secondary
+  font-weight: bold;
+
+}
+
+.route-ticklisted {
+  background-color:  $secondary; //secondary
+  font-weight: bold;
 }

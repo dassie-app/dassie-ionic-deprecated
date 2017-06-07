@@ -106,32 +106,69 @@ export class CragPage {
     }
   }
 
-  openRouteActionSheet(routeId){
-    let actionSheet = this.actionSheetCtrl.create({
-      title: "Route Actions",
-      buttons: [
+  openRouteActionSheet(route){
+    let buttons = [];
+    if (route.sent){
+      buttons.push(
         {
-          text: 'Add to Ticklist',
+          text: 'Mark as Not Sent',
           handler: ()=>{
+            this.markRouteAsNotSent(route);
           }
-        },
+        }
+      );
+    } else {
+      buttons.push(
         {
           text: 'Mark as Sent',
           handler: ()=>{
-            this.markRouteAsSent(routeId);
+            this.markRouteAsSent(route);
           }
         }
-      ]
+      );
+    }
+    if (route.ticklisted){
+      buttons.push(
+        {
+          text: 'Remove from Ticklist',
+          handler: ()=>{
+            this.removeRouteFromTicklist(route);
+          }
+        }
+      );
+    } else {
+      buttons.push(
+        {
+          text: 'Add to Ticklist',
+          handler: ()=>{
+            this.addRouteToTicklist(route);
+          }
+        }
+      );
+    }
+
+    let actionSheet = this.actionSheetCtrl.create({
+      title: "Route Actions",
+      buttons: buttons
     });
     actionSheet.present();
   }
 
-  markRouteAsSent(routeId) {
-    let routeFilter = _.filter(this.routes, {'id': routeId});
-    let route = routeFilter[0];
+  markRouteAsSent(route) {
     route.sent = true;
-    console.log(route);
-    route.sent = true;
+    route.ticklisted = false;
+  }
+
+  markRouteAsNotSent(route) {
+    route.sent = false;
+  }
+
+  addRouteToTicklist(route) {
+    route.ticklisted = true;
+  }
+
+  removeRouteFromTicklist(route) {
+    route.ticklisted = false;
   }
 
 }

@@ -21,12 +21,14 @@
   <h3>Routes at {{ crag.name }}</h3>
   <h6>Order: {{ routeOrder }}</h6>
 
-  <ion-card *ngFor="let route of routes" (click)="goToRoute(route.id)" (press)="openRouteActionSheet(route.id)" [ngClass]="{'route-sent': route.sent}">
+  <ion-card *ngFor="let route of routes" (click)="goToRoute(route.id)" (press)="openRouteActionSheet(route)" [ngClass]="{'route-sent': route.sent, 'route-ticklisted': route.ticklisted}">
     <ion-card-header class="route-card-header">
       <span>{{ route.name }}</span>
       <span>
         <ion-icon *ngFor="let star of route.starArray" name="star"></ion-icon>
         {{route.grade}}
+        <ion-icon *ngIf="route.sent" name="checkmark"></ion-icon>
+        <ion-icon *ngIf="route.ticklisted" name="heart"></ion-icon>
       </span>
     </ion-card-header>
   </ion-card>
