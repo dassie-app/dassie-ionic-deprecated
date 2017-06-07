@@ -42,7 +42,7 @@ export class CragPage {
     });
   }
 
-  openActionSheet(){
+  openOrderActionSheet(){
     let actionSheet = this.actionSheetCtrl.create({
       title: "Order Routes by",
       buttons: [
@@ -104,6 +104,34 @@ export class CragPage {
         this.routeOrder = 'Star Rating';
         break;
     }
+  }
+
+  openRouteActionSheet(routeId){
+    let actionSheet = this.actionSheetCtrl.create({
+      title: "Route Actions",
+      buttons: [
+        {
+          text: 'Add to Ticklist',
+          handler: ()=>{
+          }
+        },
+        {
+          text: 'Mark as Sent',
+          handler: ()=>{
+            this.markRouteAsSent(routeId);
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  markRouteAsSent(routeId) {
+    let routeFilter = _.filter(this.routes, {'id': routeId});
+    let route = routeFilter[0];
+    route.sent = true;
+    console.log(route);
+    route.sent = true;
   }
 
 }
