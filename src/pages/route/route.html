@@ -1,21 +1,30 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar class="route-header" [ngClass]="{'sent': route.sent, 'ticklisted': route.ticklisted}">
     <ion-title>
-      {{route.name}}
+      <span>{{route.name}}</span>
+      <span>
+        <ion-icon *ngIf="route.sent" name="checkmark"></ion-icon>
+        <ion-icon *ngIf="route.ticklisted" name="heart"></ion-icon>
+      </span>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
   <ion-card>
-    <ion-card-header>
-      {{ route.name }}
+    <img src="https://placebear.com/400/400"/>
+    <ion-card-header class="route-card-header">
+      <span>{{ route.name }}</span>
+      <span>
+        <ion-icon *ngFor="let star of route.starArray" name="star"></ion-icon>
+        {{route.grade}}
+        <ion-icon *ngIf="route.sent" name="checkmark"></ion-icon>
+        <ion-icon *ngIf="route.ticklisted" name="heart"></ion-icon>
+      </span>
     </ion-card-header>
-
     <ion-card-content>
       {{ route.description }}
     </ion-card-content>
   </ion-card>
-  
+
 </ion-content>

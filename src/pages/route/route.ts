@@ -15,6 +15,10 @@ export class RoutePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private apiService: ApiService) {
     this.routeId = this.navParams.get('id');
     this.route = this.apiService.getRouteById(this.routeId);
+    this.route.starArray = [];
+    for (let i = 0; i < this.route.stars; i++){
+      this.route.starArray.push(0);
+    }
   }
 
 }
