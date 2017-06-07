@@ -12,6 +12,9 @@ import { CragPage } from '../pages/crag/crag';
 import { RoutePage } from '../pages/route/route';
 import { TicklistPage} from '../pages/tick-list/tick-list';
 import { SearchPage} from '../pages/search/search';
+import { SearchAreasPage} from '../pages/search-areas/search-areas';
+import { SearchCragsPage} from '../pages/search-crags/search-crags';
+import { SearchRoutesPage} from '../pages/search-routes/search-routes';
 
 import { MockDataService } from './api/mock-data.service';
 import { ApiService } from './api/api.service';
@@ -24,7 +27,10 @@ import { ApiService } from './api/api.service';
     CragPage,
     RoutePage,
     TicklistPage,
-    SearchPage
+    SearchPage,
+    SearchAreasPage,
+    SearchCragsPage,
+    SearchRoutesPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,10 @@ import { ApiService } from './api/api.service';
     CragPage,
     RoutePage,
     TicklistPage,
-    SearchPage
+    SearchPage,
+    SearchAreasPage,
+    SearchCragsPage,
+    SearchRoutesPage
   ],
   providers: [
     StatusBar,

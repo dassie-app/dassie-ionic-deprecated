@@ -8,7 +8,7 @@
 
 <ion-content padding>
   <ion-list>
-  <button ion-item *ngFor="let search of searches" (click)="searchSelected(item)">
+  <button ion-item *ngFor="let search of searches" (click)="searchSelected(search.id)">
     <ion-row justify-content-between><span>{{search.text}}</span> <ion-icon name="arrow-forward"></ion-icon></ion-row>
   </button>  
 </ion-list>

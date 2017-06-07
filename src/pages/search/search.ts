@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { SearchAreasPage} from '../search-areas/search-areas';
+import { SearchCragsPage} from '../search-crags/search-crags';
+import { SearchRoutesPage} from '../search-routes/search-routes';
+
 @Component({
   selector: 'page-search',
   templateUrl: 'search.html',
@@ -23,5 +27,20 @@ export class SearchPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
+
+  searchSelected(searchId: number){
+    switch(searchId){
+      case 1:
+        this.navCtrl.push(SearchRoutesPage);
+        break;
+      case 2:
+        this.navCtrl.push(SearchCragsPage);
+        break;
+      case 3:
+        this.navCtrl.push(SearchAreasPage);
+        break;
+    }
+  }
+
 
 }
