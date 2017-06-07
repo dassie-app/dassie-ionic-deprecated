@@ -20,7 +20,7 @@
 
   <h3>Routes at {{crag.name}}</h3>
 
-  <ion-card *ngFor="let route of routes" (click)="goToRoute(crag.id)">
+  <ion-card *ngFor="let route of routes" (click)="goToRoute(route.id)">
     <ion-card-header>
       {{ route.name }}
     </ion-card-header>
