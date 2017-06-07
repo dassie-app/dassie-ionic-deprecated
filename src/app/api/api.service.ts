@@ -54,4 +54,8 @@ export class ApiService {
     return this.mockData.getTicklistedRoutes();
   }
 
+  getSentRoutes(){
+    return this.mockData.getSentRoutes();
+  }
+
 }
