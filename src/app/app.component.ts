@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { TicklistPage} from '../pages/tick-list/tick-list';
+import { SearchPage} from '../pages/search/search';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,6 +30,10 @@ export class MyApp {
 
   goToTicklist(){
     this.nav.push(TicklistPage);
+  }
+
+  goToSearch(){
+    this.nav.push(SearchPage);
   }
 }
 
