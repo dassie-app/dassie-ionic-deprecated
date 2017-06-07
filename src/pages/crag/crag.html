@@ -19,14 +19,24 @@
   </ion-card>
 
   <h3>Routes at {{crag.name}}</h3>
-
+  <ion-grid>
+    <ion-row>
+      <ion-buttons end>
+        <button ion-button><ion-icon name="settings"></ion-icon></button>
+      </ion-buttons>
+    </ion-row>
+  </ion-grid>
   <ion-card *ngFor="let route of routes" (click)="goToRoute(route.id)">
-    <ion-card-header>
-      {{ route.name }}
+    <ion-card-header class="route-card-header">
+      <span>{{ route.name }}</span>
+      <span>
+        <ion-icon *ngFor="let star of route.starArray" name="star"></ion-icon>
+        {{route.grade}}
+      </span>
     </ion-card-header>
-
-    <ion-card-content>
-      Route Info
-    </ion-card-content>
   </ion-card>
 </ion-content>
+
+<ion-fab left bottom>
+<button ion-fab color="light" (click)="openActionSheet()"><ion-icon name="settings"></ion-icon></button>
+</ion-fab>
