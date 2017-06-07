@@ -5,6 +5,7 @@ import { DeviceFeedback } from '@ionic-native/device-feedback';
 import { ApiService } from '../../app/api/api.service';
 
 import { RoutePage } from '../route/route';
+import { AreaPage } from '../area/area';
 
 import _ from 'lodash';
 
@@ -16,6 +17,7 @@ export class CragPage {
 
   cragId;
   crag;
+  area;
   routes;
   routeOrder = 'Left to Right';
 
@@ -28,6 +30,7 @@ export class CragPage {
   ){
     this.cragId = this.navParams.get('id');
     this.crag = this.apiService.getCragById(this.cragId);
+    this.area = this.apiService.getAreaById(this.crag.area);
     this.routes = this.apiService.getRoutesByCrag(this.cragId);
     this.routes.map(route=>{
       route.starArray = [];
@@ -39,6 +42,12 @@ export class CragPage {
 
   goToRoute(id: number) {
      this.navCtrl.push(RoutePage, {
+       id: id
+    });
+  }
+  
+  goToArea(id: number) {
+     this.navCtrl.push(AreaPage, {
        id: id
     });
   }
