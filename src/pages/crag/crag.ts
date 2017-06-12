@@ -7,8 +7,6 @@ import { ApiService } from '../../app/api/api.service';
 import { RoutePage } from '../route/route';
 import { AreaPage } from '../area/area';
 
-import _ from 'lodash';
-
 @Component({
   selector: 'page-crag',
   templateUrl: 'crag.html',
@@ -19,6 +17,8 @@ export class CragPage {
   crag;
   area;
   routes;
+  sortProperty: string =  'order';
+  sortAscending: boolean  = true;
   routeOrder = 'Left to Right';
 
   constructor(
@@ -60,62 +60,41 @@ export class CragPage {
         {
           text: 'Left to Right',
           handler: ()=>{
-            this.orderRoutes('leftRight');
+            this.sortProperty = 'order';
+            this.sortAscending = true;
           }
         },
         {
           text: 'Right to Left',
           handler: ()=>{
-            this.orderRoutes('rightLeft');
+            this.sortProperty = 'order';
+            this.sortAscending = false;
           }
         },
         {
           text: 'Grade - Low to High',
           handler: ()=>{
-            this.orderRoutes('lowHigh');
+            this.sortProperty = 'grade';
+            this.sortAscending = true;
           }
         },
         {
           text: 'Grade - High to Low',
           handler: ()=>{
-           this.orderRoutes('highLow');
+           this.sortProperty = 'grade';
+            this.sortAscending = false;
           }
         },
         {
           text: 'Star Rating',
           handler: ()=>{
-            this.orderRoutes('stars');
+            this.sortProperty = 'stars';
+            this.sortAscending = false;
           }
         }
       ]
     });
     actionSheet.present();
-  }
-
-  orderRoutes(order){
-    this.deviceFeedback.haptic(1);
-    switch(order){
-      case 'leftRight':
-        this.routes = _.orderBy(this.routes,['order'], ['asc']);
-        this.routeOrder = 'Left to Right';
-        break;
-      case 'rightLeft':
-        this.routes = _.orderBy(this.routes,['order'], ['desc']);
-        this.routeOrder = 'Right to Left';
-        break;
-      case 'lowHigh':
-        this.routes = _.orderBy(this.routes,['grade'], ['asc']);
-        this.routeOrder = 'Grade - Low to High';
-        break;
-      case 'highLow':
-        this.routes = _.orderBy(this.routes,['grade'], ['desc']);
-        this.routeOrder = 'Grade - High to Low';
-        break;
-      case 'stars':
-        this.routes = _.orderBy(this.routes,['stars'], ['desc']);
-        this.routeOrder = 'Star Rating';
-        break;
-    }
   }
 
   openRouteActionSheet(route){
