@@ -8,6 +8,7 @@
 
 <ion-content padding>
   <ion-card>
+    <img src="https://placebear.com/400/400" />
     <ion-card-header>
       {{ area.name }}
     </ion-card-header>
@@ -21,12 +22,19 @@
 
   <ion-card *ngFor="let crag of crags" (click)="goToCrag(crag.id)">
     <ion-card-header>
-      {{ crag.name }}
+      <ion-row justify-content-between align-items-center>
+        <h1>{{ crag.name }}</h1> <span>{{crag.height}}m</span>
+      </ion-row>
     </ion-card-header>
 
     <ion-card-content>
-      Crag Info
+      <ion-row justify-content-between align-items-center margin-vertical>
+        <h2>Number of Routes</h2> <span>22</span>
+      </ion-row>
+      <ion-row justify-content-between align-items-center margin-top>
+        <h2>Range of Grades</h2> <span>16-30</span>
+      </ion-row>
     </ion-card-content>
   </ion-card>
-  
+
 </ion-content>

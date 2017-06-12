@@ -11,6 +11,7 @@ import { AreaPage } from '../pages/area/area';
 import { CragPage } from '../pages/crag/crag';
 import { RoutePage } from '../pages/route/route';
 import { TicklistPage} from '../pages/tick-list/tick-list';
+import { SentRoutesPage} from '../pages/sent-routes/sent-routes';
 import { SearchPage} from '../pages/search/search';
 import { SearchAreasPage} from '../pages/search-areas/search-areas';
 import { SearchCragsPage} from '../pages/search-crags/search-crags';
@@ -28,6 +29,7 @@ import { SortRoutesPipe } from '../pipes/sort-routes/sort-routes';
     CragPage,
     RoutePage,
     TicklistPage,
+    SentRoutesPage,
     SearchPage,
     SearchAreasPage,
     SearchCragsPage,
@@ -46,6 +48,7 @@ import { SortRoutesPipe } from '../pipes/sort-routes/sort-routes';
     CragPage,
     RoutePage,
     TicklistPage,
+    SentRoutesPage,
     SearchPage,
     SearchAreasPage,
     SearchCragsPage,

@@ -271,4 +271,8 @@ export class MockDataService {
     return _.filter(this.mockData.routes, {'ticklisted': true});
   }
 
+  getSentRoutes(){
+    return _.filter(this.mockData.routes, {'sent': true});
+  }
+
 }
