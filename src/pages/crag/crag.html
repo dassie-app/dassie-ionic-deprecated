@@ -1,8 +1,11 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>
-      {{crag.name}}
-    </ion-title>
+    <ion-row justify-content-between>
+      <ion-title>
+        {{crag.name}}
+      </ion-title>
+      <button ion-fab mini color="light" (click)="openOrderActionSheet()"><ion-icon name="settings"></ion-icon></button>
+    </ion-row>
   </ion-navbar>
 </ion-header>
 
@@ -36,7 +39,3 @@
     <ion-icon name="arrow-back" padding-right></ion-icon>{{ area.name }}
   </button>
 </ion-content>
-
-<ion-fab left bottom>
-<button ion-fab color="light" (click)="openOrderActionSheet()"><ion-icon name="settings"></ion-icon></button>
-</ion-fab>
