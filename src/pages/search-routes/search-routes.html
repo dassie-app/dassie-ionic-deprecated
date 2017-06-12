@@ -15,11 +15,19 @@
     <ion-item>
       <ion-label>Grade</ion-label>
       <ion-select [(ngModel)]="selectedGrade">
+        <ion-option value="any">Any</ion-option>
         <ion-option *ngFor = "let grade of grades" [value]="grade">{{ grade }}</ion-option>
       </ion-select>
     </ion-item>
+    <ion-item>
+      <ion-label>Stars</ion-label>
+      <ion-select [(ngModel)]="selectedStars">
+        <ion-option value="any">Any</ion-option>
+        <ion-option *ngFor = "let star of stars" [value]="star">{{star}}</ion-option>
+      </ion-select>
+    </ion-item>
   </ion-list>
-  <ion-card *ngFor="let route of routes | filterRoutes: selectedGrade : searchTerm | sortRoutes:'stars':false" (click)="goToRoute(route.id)" (press)="openRouteActionSheet(route)" [ngClass]="{'route-sent': route.sent, 'route-ticklisted': route.ticklisted}">
+  <ion-card *ngFor="let route of routes | filterRoutes: selectedGrade : searchTerm : selectedStars | sortRoutes:'stars':false" (click)="goToRoute(route.id)" (press)="openRouteActionSheet(route)" [ngClass]="{'route-sent': route.sent, 'route-ticklisted': route.ticklisted}">
     <ion-card-header class="route-card-header">
       <span>{{ route.name }}</span>
       <span>
