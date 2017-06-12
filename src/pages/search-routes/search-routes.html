@@ -15,7 +15,7 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  <ion-card *ngFor="let route of routes | sortRoutes:'stars':false" (click)="goToRoute(route.id)" (press)="openRouteActionSheet(route)" [ngClass]="{'route-sent': route.sent, 'route-ticklisted': route.ticklisted}">
+  <ion-card *ngFor="let route of routes | filterRoutes: selectedGrade | sortRoutes:'stars':false" (click)="goToRoute(route.id)" (press)="openRouteActionSheet(route)" [ngClass]="{'route-sent': route.sent, 'route-ticklisted': route.ticklisted}">
     <ion-card-header class="route-card-header">
       <span>{{ route.name }}</span>
       <span>
