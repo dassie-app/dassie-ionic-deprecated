@@ -88,8 +88,8 @@ export class MockDataService {
       },
 
     },
-    routes: {
-      1: {
+    routes: [
+      {
         id: 1,
         crag: 1,
         name: "Tranquilitas 1",
@@ -100,7 +100,7 @@ export class MockDataService {
         order: 0
 
       },
-      2: {
+      {
         id: 2,
         crag: 1,
         name: "Tranquilitas 2",
@@ -111,7 +111,7 @@ export class MockDataService {
         order: 1
 
       },
-      3: {
+      {
         id: 3,
         crag: 1,
         name: "Tranquilitas 3",
@@ -122,7 +122,7 @@ export class MockDataService {
         order: 2
 
       },
-      4: {
+      {
         id: 4,
         crag: 2,
         name: "God No 1",
@@ -133,7 +133,7 @@ export class MockDataService {
         order: 0
 
       },
-      5: {
+      {
         id: 5,
         crag: 2,
         name: "God No 2",
@@ -144,7 +144,7 @@ export class MockDataService {
         order: 1
 
       },
-      6: {
+      {
         id: 6,
         crag: 2,
         name: "God No 3",
@@ -155,7 +155,7 @@ export class MockDataService {
         order: 2
 
       },
-      7: {
+      {
         id: 7,
         crag: 2,
         name: "God No 4",
@@ -166,7 +166,7 @@ export class MockDataService {
         order: 3
 
       }
-    },
+    ],
     pitches: {
       1: {
         id: 1,
@@ -261,6 +261,10 @@ export class MockDataService {
       //countries.push(this.mockData.countries[key])
     });
     return countries;
+  }
+
+  getAllRoutes(){
+    return this.mockData.routes.map((route)=>{return route});;
   }
 
   getTicklistedRoutes(){

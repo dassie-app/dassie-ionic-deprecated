@@ -50,6 +50,10 @@ export class ApiService {
     return this.mockData.getAllCountries();
   }
 
+  getAllRoutes(){
+    return this.mockData.getAllRoutes();
+  }
+
   getTicklistedRoutes(){
     return this.mockData.getTicklistedRoutes();
   }

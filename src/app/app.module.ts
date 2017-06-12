@@ -18,6 +18,7 @@ import { SearchRoutesPage} from '../pages/search-routes/search-routes';
 
 import { MockDataService } from './api/mock-data.service';
 import { ApiService } from './api/api.service';
+import { SortRoutesPipe } from '../pipes/sort-routes/sort-routes';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ApiService } from './api/api.service';
     SearchPage,
     SearchAreasPage,
     SearchCragsPage,
-    SearchRoutesPage
+    SearchRoutesPage,
+    SortRoutesPipe
   ],
   imports: [
     BrowserModule,
