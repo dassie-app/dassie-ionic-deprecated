@@ -1,8 +1,11 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>
-      Search Routes
-    </ion-title>
+    <ion-row justify-content-between>
+      <ion-title>
+        Search Routes
+      </ion-title>
+      <button ion-fab mini color="light" (click)="openOrderActionSheet()"><ion-icon name="settings"></ion-icon></button>
+    </ion-row>
   </ion-navbar>
 </ion-header>
 
@@ -27,7 +30,7 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  <ion-card *ngFor="let route of routes | filterRoutes: selectedGrade : searchTerm : selectedStars | sortRoutes:'stars':false" (click)="goToRoute(route.id)" (press)="openRouteActionSheet(route)" [ngClass]="{'route-sent': route.sent, 'route-ticklisted': route.ticklisted}">
+  <ion-card *ngFor="let route of routes | filterRoutes: selectedGrade : searchTerm : selectedStars | sortRoutes : sortProperty : sortAscending" (click)="goToRoute(route.id)" (press)="openRouteActionSheet(route)" [ngClass]="{'route-sent': route.sent, 'route-ticklisted': route.ticklisted}">
     <ion-card-header class="route-card-header">
       <span>{{ route.name }}</span>
       <span>

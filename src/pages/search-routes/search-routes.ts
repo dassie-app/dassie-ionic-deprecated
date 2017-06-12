@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ActionSheetController } from 'ionic-angular';
+import { NavController, ActionSheetController } from 'ionic-angular';
 
 import { DeviceFeedback } from '@ionic-native/device-feedback';
 
@@ -19,6 +19,8 @@ export class SearchRoutesPage {
   grades: any[] = [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35];
   stars : any[] = [1,2,3,4,5];
   searchTerm: string;
+  sortProperty : string  = 'grade';
+  sortAscending : boolean  = false;
 
   constructor(
     public navCtrl: NavController,
@@ -39,6 +41,37 @@ export class SearchRoutesPage {
      this.navCtrl.push(RoutePage, {
        id: id
     });
+  }
+
+  openOrderActionSheet(){
+    this.deviceFeedback.haptic(1);
+    let actionSheet = this.actionSheetCtrl.create({
+      title: "Order Routes by",
+      buttons: [
+        {
+          text: 'Grade - Low to High',
+          handler: ()=>{
+            this.sortProperty = 'grade';
+            this.sortAscending = true;
+          }
+        },
+        {
+          text: 'Grade - High to Low',
+          handler: ()=>{
+           this.sortProperty = 'grade';
+            this.sortAscending = false;
+          }
+        },
+        {
+          text: 'Star Rating',
+          handler: ()=>{
+            this.sortProperty = 'stars';
+            this.sortAscending = false;
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 
 }
