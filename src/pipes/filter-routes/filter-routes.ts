@@ -8,7 +8,7 @@ export class FilterRoutesPipe implements PipeTransform {
   
   transform(routes: any[], grade : any, searchTerm : string) {
     this.returnRoutes = routes;
-    if (grade != 'any'){
+    if (grade != 'any' || !grade){
       this.returnRoutes = this.returnRoutes.filter((route)=>{return route.grade === grade});
     }
     if (searchTerm) {
