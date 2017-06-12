@@ -16,7 +16,7 @@ export class AreaPage {
   crags;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private apiService: ApiService) {
-    this.areaId = this.navParams.get('id');
+    this.areaId = parseInt(this.navParams.get('id'));
     this.area = this.apiService.getAreaById(this.areaId);
     this.crags = this.apiService.getCragsByArea(this.areaId);
   }

@@ -6,13 +6,6 @@ export class ApiService {
 
   constructor(private mockData: MockDataService) { }
 
-  getCountryById(id: number) {
-    return this.mockData.getCountryById(id);
-  }
-
-  getRegionById(id: number) {
-    return this.mockData.getRegionById(id);
-  }
 
   getAreaById(id: number) {
     return this.mockData.getAreaById(id);
@@ -26,16 +19,8 @@ export class ApiService {
     return this.mockData.getRouteById(id);
   }
 
-  getPitchById(id: number) {
-    return this.mockData.getPitchById(id);
-  }
-
-  getRegionsByCountry(countryId: number){
-    return this.mockData.getRegionsByCountry(countryId);
-  }
-
-  getAreasByRegion(regionId: number){
-    return this.mockData.getAreasByRegion(regionId);
+  getAllAreas(){
+    return this.mockData.getAllAreas();
   }
 
   getCragsByArea(areaId: number){
@@ -44,10 +29,6 @@ export class ApiService {
 
   getRoutesByCrag(cragId: number){
     return this.mockData.getRoutesByCrag(cragId);
-  }
-
-  getAllCountries(){
-    return this.mockData.getAllCountries();
   }
 
   getAllRoutes(){

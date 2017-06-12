@@ -1,38 +1,19 @@
 import { Injectable } from '@angular/core';
-import _ from 'lodash/core';
 
 @Injectable()
 export class MockDataService {
 
   mockData = {
-    countries: {
-      1: {
+    areas: [
+      {
         id: 1,
-        name: "South Africa",
-        description: "This is the description for South Africa",
-
-      }
-    },
-    regions: {
-      1: {
-        id: 1,
-        country: 1,
-        name: "Waterval Boven",
-        description: "This is the description for Waterval Boven",
-
-      }
-    },
-    areas: {
-      1: {
-        id: 1,
-        region: 1,
         name: "The Restaurant Area",
         description: "If you visit one crag at the Restaurant Area make it the Restaurant Crag itself! This was the first area to be developed at Boven, back in the early nineties, and still hosts some of the highest quality climbing in Boven, up to 29. The crags are situated around the Elandskrans Resort (now closed.)"
 
       }
-    },
-    crags: {
-      1: {
+    ],
+    crags: [
+      {
         id: 1,
         area: 1,
         name: "The School",
@@ -41,7 +22,7 @@ export class MockDataService {
         aspect: "South East. Shady by late morning.",
         approach: "As for The Restaurant Crag (below). Either walk in from the base of the Restaurant Crag, or park just before the conference hall, there is a poor path leading down into the valley over a small wall. This path leads steeply down the hillside to the river. About 50m down you will see a small path on the left, heading slightly upwards till you find the first routes after 40m or so. " 
       },
-      2: {
+      {
         id: 2,
         area: 1,
         name: "The Restaurant Crag ",
@@ -51,7 +32,7 @@ export class MockDataService {
         approach: "If coming from town from Roc ‘n Rope. After a couple of kilometers the Elandskrans Resort is reached on the left, before the road becomes a gravel road. If from Tranquilitas It is on the right just after the start of the tar road. \nOn foot, pass the swimming pools, heading right towards the cliffs past a warning sign (steep cliffs etc.). Before reaching the viewpoint at the top of the Gaper buttress, turn sharp right and after 20 metres the path forks, go left and down steeply through trees over some slippery rocks. If you go down immediately beside (on right looking out) of the Gaper Buttress viewpoint you will end up in a gully that is the access for Gaper itself. "
 
       },
-      3: {
+      {
         id: 3,
         area: 1,
         name: "Gaper Buttress",
@@ -60,7 +41,7 @@ export class MockDataService {
         aspect: "Southeast. Shady by late morning. Hardly ever wet. ",
         approach: "As for the Restaurant except take the trail going steeply down just to the right before walking onto the top of the Gaper viewpoint. "
       },
-      4: {
+      {
         id: 4,
         area: 1,
         name: "Gaper Face",
@@ -69,7 +50,7 @@ export class MockDataService {
         aspect: "Some routes here are protected from the morning sun and it gets into full shade around lunch time.",
         approach: "As for Gaper Butress, just keep walking right and uphill from the base of the Gaper Buttress"
       },
-      5: {
+      {
         id: 5,
         area: 1,
         name: "Easter Face",
@@ -77,7 +58,7 @@ export class MockDataService {
         height: 13,
         approach: "Walk in from the pools. Turn left before stepping onto Gaper Buttress. After about 100m a trail ducks right down the hill. Keep right and against the cliff face. The routes on this crag start by a huge boulder on your left. "
       },
-      6: {
+      {
         id: 6,
         area: 1,
         name: "Monsoon Wall",
@@ -87,7 +68,7 @@ export class MockDataService {
         approach: "From the swimming pools, walk down towards Gaper Buttress, past the warning sign. Follow the main path along the cliff top, after a 100 metres o so the path starts to descend, don’t go down, leaft the path and continue walking along the top of the cliffs until you are approx 250 metres from the pools. Look carefully and you will a ‘slot’ where a section of the cliff is detached. Hop across onto the block and you are at the top of the climbs. To get down, walk back along the cliff 8 metres, there is a small cairn (pile of stones) indicating the scramble down through the tree and into the gulley. Go down the gulley rightwards then back around left to the base of the climbs. You will arrive at the climbs beside Tropical Front."
       },
 
-    },
+    ],
     routes: [
       {
         id: 1,
@@ -97,7 +78,9 @@ export class MockDataService {
         grade: 26,
         stars: 5,
         bolts: 16,
-        order: 0
+        order: 0,
+        ticklisted: false,
+        sent: false
 
       },
       {
@@ -108,7 +91,9 @@ export class MockDataService {
         grade: 22,
         stars: 4,
         bolts: 16,
-        order: 1
+        order: 1,
+        ticklisted: false,
+        sent: false
 
       },
       {
@@ -119,7 +104,9 @@ export class MockDataService {
         grade: 23,
         stars: 3,
         bolts: 16,
-        order: 2
+        order: 2,
+        ticklisted: false,
+        sent: false
 
       },
       {
@@ -130,7 +117,9 @@ export class MockDataService {
         grade: 16,
         stars: 5,
         bolts: 16,
-        order: 0
+        order: 0,
+        ticklisted: false,
+        sent: false
 
       },
       {
@@ -141,7 +130,9 @@ export class MockDataService {
         grade: 18,
         stars: 3,
         bolts: 16,
-        order: 1
+        order: 1,
+        ticklisted: false,
+        sent: false
 
       },
       {
@@ -152,7 +143,9 @@ export class MockDataService {
         grade: 31,
         stars: 4,
         bolts: 16,
-        order: 2
+        order: 2,
+        ticklisted: false,
+        sent: false
 
       },
       {
@@ -163,116 +156,49 @@ export class MockDataService {
         grade: 28,
         stars: 2,
         bolts: 16,
-        order: 3
+        order: 3,
+        ticklisted: false,
+        sent: false
 
       }
-    ],
-    pitches: {
-      1: {
-        id: 1,
-        route: 1,
-        number: 1
-
-      },
-      2: {
-        id: 2,
-        route: 2,
-        number: 1
-
-      },
-      3: {
-        id: 3,
-        route: 3,
-        number: 1
-
-      },
-      4: {
-        id: 4,
-        route: 4,
-        number: 1
-
-      },
-      5: {
-        id: 5,
-        route: 5,
-        number: 1
-
-      },
-      6: {
-        id: 6,
-        route: 6,
-        number: 1
-
-      },
-      7: {
-        id: 7,
-        route: 7,
-        number: 1
-
-      },
-    }
+    ]
   }
   constructor() { }
 
-  getCountryById(id: number) {
-    return this.mockData.countries[id];
+  getAllAreas(){
+    return this.mockData.areas;
   }
 
-  getRegionById(id: number) {
-    return this.mockData.regions[id];
-  }
-
-  getAreaById(id: number) {
-    return this.mockData.areas[id];
+  getAreaById(areaId: number) {
+    return this.mockData.areas.filter((area)=>{return area.id == areaId})[0];
   }
 
   getCragById(id: number) {
-    return this.mockData.crags[id];
+    return this.mockData.crags.filter((crag)=> {return crag.id == id})[0];
   }
 
   getRouteById(id: number) {
-    return this.mockData.routes[id];
-  }
-
-  getPitchById(id: number) {
-    return this.mockData.pitches[id];
-  }
-
-  getRegionsByCountry(countryId: number){
-    return _.filter(this.mockData.regions, {'country': countryId});
-  }
-
-  getAreasByRegion(regionId: number){
-    return _.filter(this.mockData.areas, {'region': regionId});
+    return this.mockData.routes.filter((route)=>{return route.id == id})[0];
   }
 
   getCragsByArea(areaId: number){
-    return _.filter(this.mockData.crags, {'area': areaId});
+    return this.mockData.crags.filter((crag)=>{return crag.area == areaId})
   }
 
   getRoutesByCrag(cragId: number){
-    return _.filter(this.mockData.routes, {'crag': cragId});
-  }
-
-  getAllCountries(){
-    let keys = _.keys(this.mockData.countries);
-    let countries = keys.map(key => {
-      return this.mockData.countries[key];
-      //countries.push(this.mockData.countries[key])
-    });
-    return countries;
+    return this.mockData.routes.filter((route)=>{return route.crag == cragId})
   }
 
   getAllRoutes(){
-    return this.mockData.routes.map((route)=>{return route});;
+    return this.mockData.routes;
   }
 
   getTicklistedRoutes(){
-    return _.filter(this.mockData.routes, {'ticklisted': true});
+    return this.mockData.routes.filter((route)=>{return route.ticklisted});
   }
 
   getSentRoutes(){
-    return _.filter(this.mockData.routes, {'sent': true});
+    return this.mockData.routes.filter((route)=>{return route.sent});
   }
 
 }
