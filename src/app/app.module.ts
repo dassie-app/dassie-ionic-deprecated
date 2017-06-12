@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule, NavController } from 'ionic-a
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { DeviceFeedback } from '@ionic-native/device-feedback';
+import { SQLite } from '@ionic-native/sqlite';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -19,6 +20,8 @@ import { SearchRoutesPage} from '../pages/search-routes/search-routes';
 
 import { MockDataService } from './api/mock-data.service';
 import { ApiService } from './api/api.service';
+import { TicklistService } from './user-data/ticklist.service'
+
 import { SortRoutesPipe } from '../pipes/sort-routes/sort-routes';
 import { FilterRoutesPipe } from '../pipes/filter-routes/filter-routes';
 
@@ -60,8 +63,10 @@ import { FilterRoutesPipe } from '../pipes/filter-routes/filter-routes';
     StatusBar,
     SplashScreen,
     DeviceFeedback,
+    SQLite,
     ApiService,
     MockDataService,
+    TicklistService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
