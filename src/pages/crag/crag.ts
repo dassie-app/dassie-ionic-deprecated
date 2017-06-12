@@ -3,6 +3,7 @@ import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { DeviceFeedback } from '@ionic-native/device-feedback';
 
 import { ApiService } from '../../app/api/api.service';
+import { TicklistService } from '../../app/user-data/ticklist.service';
 
 import { RoutePage } from '../route/route';
 import { AreaPage } from '../area/area';
@@ -25,6 +26,7 @@ export class CragPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private apiService: ApiService,
+    private ticklist: TicklistService,
     private actionSheetCtrl: ActionSheetController,
     private deviceFeedback: DeviceFeedback
   ){
@@ -159,12 +161,12 @@ export class CragPage {
 
   addRouteToTicklist(route) {
     this.deviceFeedback.haptic(1);
-    route.ticklisted = true;
+    this.ticklist.addToTicklist(route.id)
   }
 
   removeRouteFromTicklist(route) {
     this.deviceFeedback.haptic(1);
-    route.ticklisted = false;
+    this.ticklist.removeFromTicklist(route.id);
   }
 
 }

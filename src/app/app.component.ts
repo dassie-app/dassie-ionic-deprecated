@@ -29,7 +29,7 @@ export class MyApp {
         location: 'default'
       }).then((db: SQLiteObject)=>{
         db.executeSql('create table if not exists sends(routeId INT)', {});
-      })
+      });
     });
   }
 
