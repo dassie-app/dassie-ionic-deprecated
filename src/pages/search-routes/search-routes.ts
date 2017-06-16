@@ -74,4 +74,74 @@ export class SearchRoutesPage {
     actionSheet.present();
   }
 
+  openRouteActionSheet(route){
+    this.deviceFeedback.haptic(3);
+    let buttons = [];
+    if (route.sent){
+      buttons.push(
+        {
+          text: 'Mark as Not Sent',
+          handler: ()=>{
+            this.markRouteAsNotSent(route);
+          }
+        }
+      );
+    } else {
+      buttons.push(
+        {
+          text: 'Mark as Sent',
+          handler: ()=>{
+            this.markRouteAsSent(route);
+          }
+        }
+      );
+    }
+    if (route.ticklisted){
+      buttons.push(
+        {
+          text: 'Remove from Ticklist',
+          handler: ()=>{
+            this.removeRouteFromTicklist(route);
+          }
+        }
+      );
+    } else {
+      buttons.push(
+        {
+          text: 'Add to Ticklist',
+          handler: ()=>{
+            this.addRouteToTicklist(route);
+          }
+        }
+      );
+    }
+
+    let actionSheet = this.actionSheetCtrl.create({
+      title: "Route Actions",
+      buttons: buttons
+    });
+    actionSheet.present();
+  }
+
+  markRouteAsSent(route) {
+    this.deviceFeedback.haptic(1);
+    route.sent = true;
+    route.ticklisted = false;
+  }
+
+  markRouteAsNotSent(route) {
+    this.deviceFeedback.haptic(1);
+    route.sent = false;
+  }
+
+  addRouteToTicklist(route) {
+    this.deviceFeedback.haptic(1);
+    route.ticklisted = true;
+  }
+
+  removeRouteFromTicklist(route) {
+    this.deviceFeedback.haptic(1);
+    route.ticklisted = false;
+  }
+
 }
