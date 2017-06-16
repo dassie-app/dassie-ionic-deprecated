@@ -26,7 +26,6 @@ export class CragPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private apiService: ApiService,
-    private ticklist: TicklistService,
     private actionSheetCtrl: ActionSheetController,
     private deviceFeedback: DeviceFeedback
   ){
@@ -161,12 +160,12 @@ export class CragPage {
 
   addRouteToTicklist(route) {
     this.deviceFeedback.haptic(1);
-    this.ticklist.addToTicklist(route.id)
+    route.ticklisted = true;
   }
 
   removeRouteFromTicklist(route) {
     this.deviceFeedback.haptic(1);
-    this.ticklist.removeFromTicklist(route.id);
+    route.ticklisted = false;
   }
 
 }

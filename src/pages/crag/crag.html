@@ -24,7 +24,7 @@
   <h3>Routes at {{ crag.name }}</h3>
   <h6>Order: {{ routeOrder }}</h6>
 
-  <ion-card *ngFor="let route of routes | sortRoutes: sortProperty: sortAscending" (click)="goToRoute(route.id)" (press)="openRouteActionSheet(route)" [ngClass]="{'route-sent': route.sent, 'route-ticklisted': ticklist.isInTicklist(route.id)}">
+  <ion-card *ngFor="let route of routes | sortRoutes: sortProperty: sortAscending" (click)="goToRoute(route.id)" (press)="openRouteActionSheet(route)" [ngClass]="{'route-sent': route.sent, 'route-ticklisted': route.ticklisted}">
     <ion-card-header class="route-card-header">
       <span>{{ route.name }}</span>
       <span>
