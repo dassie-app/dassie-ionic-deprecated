@@ -17,4 +17,10 @@ export class SentRoutesPage {
     this.routes = this.apiService.getSentRoutes();
   }
 
+  goToRoute(id: number) {
+     this.navCtrl.push(RoutePage, {
+       id: id
+    });
+  }
+
 }

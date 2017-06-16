@@ -15,6 +15,12 @@ export class TicklistPage {
   constructor(public navCtrl: NavController, private apiService: ApiService) {
     this.routes = this.apiService.getTicklistedRoutes();
   }
+  
+  goToRoute(id: number) {
+     this.navCtrl.push(RoutePage, {
+       id: id
+    });
+  }
 
 
 }

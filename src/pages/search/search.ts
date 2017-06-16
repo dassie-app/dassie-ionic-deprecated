@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SearchAreasPage} from '../search-areas/search-areas';
 import { SearchCragsPage} from '../search-crags/search-crags';
 import { SearchRoutesPage} from '../search-routes/search-routes';
+import { RoutePage } from '../route/route';
 
 @Component({
   selector: 'page-search',
@@ -26,6 +27,12 @@ export class SearchPage {
   ]
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  goToRoute(id: number) {
+     this.navCtrl.push(RoutePage, {
+       id: id
+    });
   }
 
   searchSelected(searchId: number){
