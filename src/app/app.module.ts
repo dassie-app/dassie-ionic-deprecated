@@ -19,6 +19,9 @@ import { SearchCragsPage} from '../pages/search-crags/search-crags';
 import { SearchRoutesPage} from '../pages/search-routes/search-routes';
 
 import { MockDataService } from './api/mock-data.service';
+import { MockAreasService } from './api/mock-areas.service';
+import { MockCragsService } from './api/mock-crags.service';
+import { MockRoutesService } from './api/mock-routes.service';
 import { ApiService } from './api/api.service';
 
 import { SortRoutesPipe } from '../pipes/sort-routes/sort-routes';
@@ -65,6 +68,9 @@ import { FilterRoutesPipe } from '../pipes/filter-routes/filter-routes';
     SQLite,
     ApiService,
     MockDataService,
+    MockAreasService,
+    MockCragsService,
+    MockRoutesService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
