@@ -20,7 +20,6 @@ import { SearchRoutesPage} from '../pages/search-routes/search-routes';
 
 import { MockDataService } from './api/mock-data.service';
 import { ApiService } from './api/api.service';
-import { TicklistService } from './user-data/ticklist.service'
 
 import { SortRoutesPipe } from '../pipes/sort-routes/sort-routes';
 import { FilterRoutesPipe } from '../pipes/filter-routes/filter-routes';
@@ -66,7 +65,6 @@ import { FilterRoutesPipe } from '../pipes/filter-routes/filter-routes';
     SQLite,
     ApiService,
     MockDataService,
-    TicklistService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

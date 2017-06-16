@@ -3,7 +3,6 @@ import { Platform, NavController, FabContainer } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 import { HomePage } from '../pages/home/home';
 import { TicklistPage} from '../pages/tick-list/tick-list';
@@ -19,17 +18,10 @@ export class MyApp {
   @ViewChild('mainNav') nav: NavController;
   @ViewChild('fabContainer') fabContainer: FabContainer;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private sqlite: SQLite) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
-
-      this.sqlite.create({
-        name: 'boven.db',
-        location: 'default'
-      }).then((db: SQLiteObject)=>{
-        db.executeSql('create table if not exists sends(routeId INT)', {});
-      });
     });
   }
 
