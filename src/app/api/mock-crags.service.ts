@@ -111,7 +111,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 11,
+      "id": 12,
       "area": 1,
       "name": "Malaria Area",
       "FIELD4": "",
@@ -121,7 +121,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 12,
+      "id": 13,
       "area": 1,
       "name": "Grunt Area",
       "FIELD4": "",
@@ -131,7 +131,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 13,
+      "id": 14,
       "area": 1,
       "name": "Rubik's Cube",
       "FIELD4": "",
@@ -141,7 +141,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 14,
+      "id": 15,
       "area": 2,
       "name": "Baboon Buttress",
       "FIELD4": "",
@@ -151,7 +151,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 15,
+      "id": 16,
       "area": 2,
       "name": "The God No! Wall",
       "FIELD4": "",
@@ -161,7 +161,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 16,
+      "id": 17,
       "area": 2,
       "name": "The Disciple Wall",
       "FIELD4": "",
@@ -171,7 +171,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 17,
+      "id": 18,
       "area": 2,
       "name": "The Little Red Wall",
       "FIELD4": "",
@@ -181,7 +181,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 18,
+      "id": 19,
       "area": 2,
       "name": "Hallucinogen Wall",
       "FIELD4": "",
@@ -191,7 +191,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 19,
+      "id": 20,
       "area": 2,
       "name": "Breakfast Crag",
       "FIELD4": "",
@@ -201,7 +201,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 20,
+      "id": 21,
       "area": 2,
       "name": "Reuinion Wall",
       "FIELD4": "",
@@ -211,7 +211,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 21,
+      "id": 22,
       "area": 2,
       "name": "The Superbowl",
       "FIELD4": "",
@@ -221,7 +221,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 22,
+      "id": 23,
       "area": 2,
       "name": "The Left Wing",
       "FIELD4": "",
@@ -231,7 +231,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 23,
+      "id": 24,
       "area": 2,
       "name": "The Theatre",
       "FIELD4": "",
@@ -241,7 +241,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 24,
+      "id": 25,
       "area": 2,
       "name": "The Right Wing",
       "FIELD4": "",
@@ -251,7 +251,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 25,
+      "id": 26,
       "area": 2,
       "name": "The Stone Philosopher",
       "FIELD4": "",
@@ -261,7 +261,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 26,
+      "id": 27,
       "area": 3,
       "name": "The Gym",
       "FIELD4": "",
@@ -271,7 +271,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 27,
+      "id": 28,
       "area": 3,
       "name": "He-Man Area",
       "FIELD4": "",
@@ -281,7 +281,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 28,
+      "id": 29,
       "area": 3,
       "name": "The Foundry",
       "FIELD4": "",
@@ -291,7 +291,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 29,
+      "id": 30,
       "area": 3,
       "name": "The Acid House",
       "FIELD4": "",
@@ -301,7 +301,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 30,
+      "id": 31,
       "area": 3,
       "name": "The Far Side",
       "FIELD4": "",
@@ -311,7 +311,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 31,
+      "id": 32,
       "area": 4,
       "name": "The School",
       "FIELD4": "",
@@ -321,7 +321,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 32,
+      "id": 33,
       "area": 4,
       "name": "The Restaurant",
       "FIELD4": "",
@@ -331,7 +331,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 33,
+      "id": 34,
       "area": 4,
       "name": "Gaper Buttress",
       "FIELD4": "",
@@ -341,7 +341,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 34,
+      "id": 35,
       "area": 4,
       "name": "Gaper Face",
       "FIELD4": "",
@@ -351,7 +351,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 35,
+      "id": 36,
       "area": 4,
       "name": "Easter Face",
       "FIELD4": "",
@@ -361,7 +361,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 36,
+      "id": 37,
       "area": 4,
       "name": "Monsoon Wall",
       "FIELD4": "",
@@ -371,7 +371,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 37,
+      "id": 38,
       "area": 5,
       "name": "The Boulevard",
       "FIELD4": "",
@@ -381,7 +381,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 38,
+      "id": 39,
       "area": 5,
       "name": "The Gully",
       "FIELD4": "",
@@ -391,7 +391,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 39,
+      "id": 40,
       "area": 5,
       "name": "The Beach",
       "FIELD4": "",
@@ -401,7 +401,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 40,
+      "id": 41,
       "area": 5,
       "name": "Never-never Land",
       "FIELD4": "",
@@ -411,7 +411,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 41,
+      "id": 42,
       "area": 6,
       "name": "The Other Side",
       "FIELD4": "",
@@ -421,7 +421,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 42,
+      "id": 43,
       "area": 6,
       "name": "Flying is Fun",
       "FIELD4": "",
@@ -431,7 +431,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 43,
+      "id": 44,
       "area": 6,
       "name": "Bolder Sector",
       "FIELD4": "",
@@ -441,7 +441,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 44,
+      "id": 45,
       "area": 6,
       "name": "The Pasture",
       "FIELD4": "",
@@ -451,7 +451,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 45,
+      "id": 46,
       "area": 6,
       "name": "The Coven",
       "FIELD4": "",
@@ -461,7 +461,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 46,
+      "id": 47,
       "area": 6,
       "name": "Ivory Towers",
       "FIELD4": "",
@@ -471,7 +471,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 47,
+      "id": 48,
       "area": 7,
       "name": "ZASM Tunnel Entrance (East)",
       "FIELD4": "",
@@ -481,7 +481,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 48,
+      "id": 49,
       "area": 7,
       "name": "ZASM Tunnel Entrance (West)",
       "FIELD4": "",
@@ -491,7 +491,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 49,
+      "id": 50,
       "area": 7,
       "name": "The Junkyard",
       "FIELD4": "",
@@ -501,7 +501,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 50,
+      "id": 51,
       "area": 7,
       "name": "The A.C.R.A. Wall",
       "FIELD4": "",
@@ -511,7 +511,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 51,
+      "id": 52,
       "area": 7,
       "name": "WB Wall",
       "FIELD4": "",
@@ -521,7 +521,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 52,
+      "id": 53,
       "area": 7,
       "name": "The Last Crag of the Century",
       "FIELD4": "",
@@ -531,7 +531,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 53,
+      "id": 54,
       "area": 7,
       "name": "The East End",
       "FIELD4": "",
@@ -541,7 +541,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 54,
+      "id": 55,
       "area": 7,
       "name": "Toon Town",
       "FIELD4": "",
@@ -551,7 +551,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 55,
+      "id": 56,
       "area": 7,
       "name": "The Wild Side",
       "FIELD4": "",
@@ -561,7 +561,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 56,
+      "id": 57,
       "area": 8,
       "name": "Luilekker Crags",
       "FIELD4": "",
@@ -571,7 +571,7 @@ export class MockCragsService {
       "height": 25
     },
     {
-      "id": 57,
+      "id": 58,
       "area": 8,
       "name": "The Aloes",
       "FIELD4": "",
