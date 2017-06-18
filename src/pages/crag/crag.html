@@ -30,6 +30,7 @@
       <span>
         <ion-icon *ngFor="let star of route.starArray" name="star"></ion-icon>
         {{route.grade}}
+        <ion-icon *ngIf="route.type != 'Trad'" name="american-football"></ion-icon>
         <ion-icon *ngIf="route.sent" name="checkmark"></ion-icon>
         <ion-icon *ngIf="route.ticklisted" name="heart"></ion-icon>
       </span>
