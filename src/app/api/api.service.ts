@@ -1,14 +1,24 @@
 import { Injectable } from '@angular/core';
 import { MockDataService } from './mock-data.service';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+
 
 @Injectable()
 export class ApiService {
 
-  constructor(private mockData: MockDataService) { }
+  routes: FirebaseListObservable<any[]>;
+  crags: FirebaseListObservable<any[]>;
+  areas: FirebaseListObservable<any[]>;
 
+  constructor(private mockData: MockDataService, private db: AngularFireDatabase) {
+    this.routes = db.list('/routes');
+    this.crags = db.list('/crags');
+    this.areas = db.list('/areas');
 
-  getAreaById(id: number) {
-    return this.mockData.getAreaById(id);
+  }
+
+  getAllAreas(){
+    return this.mockData.getAllAreas();
   }
 
   getCragById(id: number) {
@@ -19,9 +29,6 @@ export class ApiService {
     return this.mockData.getRouteById(id);
   }
 
-  getAllAreas(){
-    return this.mockData.getAllAreas();
-  }
 
   getCragsByArea(areaId: number){
     return this.mockData.getCragsByArea(areaId);

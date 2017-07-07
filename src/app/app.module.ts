@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { DeviceFeedback } from '@ionic-native/device-feedback';
 import { AngularFireModule } from "angularfire2";
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -60,6 +61,7 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     DeviceFeedback,
+    AngularFireDatabase,
     ApiService,
     MockDataService,
     MockAreasService,
