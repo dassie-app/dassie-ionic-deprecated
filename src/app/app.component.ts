@@ -5,9 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 import { HomePage } from '../pages/home/home';
-import { TicklistPage} from '../pages/tick-list/tick-list';
-import { SentRoutesPage} from '../pages/sent-routes/sent-routes';
-import { SearchPage} from '../pages/search/search';
+import { SearchRoutesPage} from '../pages/search-routes/search-routes';
 
 @Component({
   templateUrl: 'app.html'
@@ -32,18 +30,8 @@ export class MyApp {
     this.fabContainer.close();
   }
 
-  goToTicklist(){
-    this.nav.push(TicklistPage);
-    this.fabContainer.close();
-  }
-
-  goToSentRoutes(){
-    this.nav.push(SentRoutesPage);
-    this.fabContainer.close();
-  }
-
   goToSearch(){
-    this.nav.push(SearchPage);
+    this.nav.push(SearchRoutesPage);
     this.fabContainer.close();
   }
 }
