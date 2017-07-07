@@ -14,7 +14,9 @@ export class HomePage {
   areas;
 
   constructor(public navCtrl: NavController, private apiService: ApiService) {
-    this.areas = this.apiService.getAllAreas();
+    apiService.areas.subscribe(areas =>{
+      this.areas = areas;
+    });
   }
 
   goToArea(id: number) {

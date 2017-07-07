@@ -6,27 +6,15 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 @Injectable()
 export class ApiService {
 
-  routes = [];
-  crags = [];
-  areas = [];
-
-  routesDB;
-  cragsDB;
-  areasDB;
+  routes  : FirebaseListObservable<any[]>;
+  crags  : FirebaseListObservable<any[]>;
+  areas : FirebaseListObservable<any[]>;
 
   constructor(private mockData: MockDataService, private db: AngularFireDatabase) {
-    this.routesDB = db.list('/routes').subscribe(routes =>{
-      console.log('routes updated');
-      this.routes = routes;
-    });
-    this.cragsDB = db.list('/crags').subscribe(crags =>{
-      console.log('crags updated');
-      this.crags = crags;
-    });
-    this.areasDB = db.list('/areas').subscribe(areas =>{
-      console.log('areas updated');
-      this.areas = areas;
-    });
+
+    this.routes = db.list('/routes');
+    this.crags = db.list('/crags');
+    this.areas = db.list('/areas');
 
   }
 
