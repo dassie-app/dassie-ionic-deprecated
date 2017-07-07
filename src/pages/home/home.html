@@ -10,7 +10,7 @@
   
   <h3>Areas</h3>
 
-  <ion-card *ngFor="let area of areas" (click)="goToArea(area.id)">
+  <ion-card *ngFor="let area of areas | async " (click)="goToArea(area.id)">
     <ion-card-header>
       {{ area.name }}
     </ion-card-header>

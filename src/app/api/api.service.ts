@@ -18,7 +18,11 @@ export class ApiService {
   }
 
   getAllAreas(){
-    return this.mockData.getAllAreas();
+    return this.areas;
+  }
+
+  getAreaById(id){
+    return this.mockData.getAreaById(id);
   }
 
   getCragById(id: number) {
