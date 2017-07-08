@@ -8,14 +8,24 @@ export class FilterRoutesPipe implements PipeTransform {
   
   transform(routes: any[], grade : any, searchTerm : string, stars: any) {
     this.returnRoutes = routes;
+
+    let searchTermValid;
+    if (searchTerm){
+      searchTermValid = searchTerm.length > 3 ? true : false;
+    } else {
+      searchTermValid = false;
+    }
+    if (!searchTermValid && grade === 'any' && stars === 'any'){
+      return [];
+    }
     if (grade != 'any' && grade){
-      this.returnRoutes = this.returnRoutes.filter((route)=>{return route.grade === grade});
+      this.returnRoutes = this.returnRoutes.filter((route)=>{return route.grade == grade});
     }
     if (searchTerm) {
       this.returnRoutes = this.returnRoutes.filter((route)=>{return route.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1});
     }
     if (stars != 'any' && stars){
-      this.returnRoutes = this.returnRoutes.filter((route)=>{return route.stars === stars});
+      this.returnRoutes = this.returnRoutes.filter((route)=>{return route.stars == stars});
     }
 
     return this.returnRoutes;
