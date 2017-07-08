@@ -1,58 +1,105 @@
 import { Injectable } from '@angular/core';
-import { MockDataService } from './mock-data.service';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
+import 'rxjs/Rx';
 
 
 @Injectable()
 export class ApiService {
 
-  routes  : FirebaseListObservable<any[]>;
-  crags  : FirebaseListObservable<any[]>;
-  areas : FirebaseListObservable<any[]>;
+  routesDB: FirebaseListObservable<any[]>;
+  cragsDB: FirebaseListObservable<any[]>;
+  areasDB: FirebaseListObservable<any[]>;
 
-  constructor(private mockData: MockDataService, private db: AngularFireDatabase) {
+  routes : any[] = [];
+  crags : any[] = [];
+  areas : any[] = [];
 
-    this.routes = db.list('/routes');
-    this.crags = db.list('/crags');
-    this.areas = db.list('/areas');
+  constructor(private db: AngularFireDatabase) {
 
+    this.routesDB = db.list('/routes');
+    this.cragsDB = db.list('/crags');
+    this.areasDB = db.list('/areas');
+
+    this.routesDB.subscribe((routes) => {
+      this.routes = routes;
+    })
+    
+    this.cragsDB.subscribe((crags) => {
+      this.crags = crags;
+    })
+
+    this.areasDB.subscribe((areas) => {
+      this.areas = areas;
+    })
   }
 
-  getAllAreas(){
-    return this.areas;
+  getAllRoutes() {
+    return this.routesDB;
   }
 
-  getAreaById(id){
-    return this.mockData.getAreaById(id);
+  getRouteById(id: number): Observable<any> {
+    const routeById = Observable.create((observer: Observer<any>) => {
+      this.routesDB.subscribe((routes) => {
+        let route = routes.filter((route)=>{return route.id == id})[0];
+        observer.next(route);
+      })
+    })
+    return routeById;
   }
 
-  getCragById(id: number) {
-    return this.mockData.getCragById(id);
+  getRoutesByCrag(cragId: number): Observable<any> {
+    //return this.routes.filter((route)=>{return route.crag == cragId});
+    const routesByCrag = Observable.create((observer: Observer<any>) => {
+      this.routesDB.subscribe((routes) => {
+        let routesByCrag = routes.filter((route)=>{return route.crag == cragId});
+        observer.next(routesByCrag);
+      })
+    })
+    return routesByCrag;
   }
 
-  getRouteById(id: number) {
-    return this.mockData.getRouteById(id);
+  getCragsByArea(areaId: number): Observable<any> {
+    //return this.crags.filter((crag)=>{return crag.area == areaId});
+    const cragsByArea = Observable.create((observer: Observer<any>) => {
+      this.cragsDB.subscribe((crags) => {
+        let cragsByArea = crags.filter((crag)=>{return crag.area == areaId});
+        observer.next(cragsByArea);
+      })
+    })
+    return cragsByArea;
+  }
+
+  getCragById(id: number): Observable<any> {
+    const cragById = Observable.create((observer: Observer<any>) => {
+      this.cragsDB.subscribe((crags) => {
+        let crag = crags.filter((crag) => { return crag.id == id})[0];
+        observer.next(crag);
+      })
+    });
+
+    return cragById;
+  }
+
+  getAllAreas() : Observable <any[]> {
+    return this.areasDB;
+  }
+
+  getAreaById(id): Observable<any> {
+    const areaById = Observable.create((observer: Observer<any>) => {
+      this.areasDB.subscribe((areas) => {
+        let area = areas.filter((area)=>{return area.id == id})[0];
+        observer.next(area);
+      })
+    })
+    return areaById;
   }
 
 
-  getCragsByArea(areaId: number){
-    return this.mockData.getCragsByArea(areaId);
-  }
 
-  getRoutesByCrag(cragId: number){
-    return this.mockData.getRoutesByCrag(cragId);
-  }
 
-  getAllRoutes(){
-    return this.routes;
-  }
 
-  getTicklistedRoutes(){
-    return this.mockData.getTicklistedRoutes();
-  }
 
-  getSentRoutes(){
-    return this.mockData.getSentRoutes();
-  }
 
 }

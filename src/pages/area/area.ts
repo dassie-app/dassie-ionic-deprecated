@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Subscription } from 'rxjs/Subscription';
 
 import { ApiService } from '../../app/api/api.service';
 
@@ -9,8 +10,9 @@ import { CragPage } from '../crag/crag';
   selector: 'page-area',
   templateUrl: 'area.html',
 })
-export class AreaPage {
-
+export class AreaPage implements OnDestroy {
+  areaSubscription : Subscription;
+  cragsSubscription: Subscription;
   areaId;
   area;
   crags;
@@ -19,12 +21,25 @@ export class AreaPage {
     this.areaId = parseInt(this.navParams.get('id'));
     this.area = this.apiService.getAreaById(this.areaId);
     this.crags = this.apiService.getCragsByArea(this.areaId);
+
+    this.areaSubscription =  this.apiService.getAreaById(this.areaId).subscribe((area) => {
+      this.area = area;
+    });
+
+    this.cragsSubscription = this.apiService.getCragsByArea(this.areaId).subscribe((crags) => {
+      this.crags = crags;
+    })
   }
 
   goToCrag(id: number) {
      this.navCtrl.push(CragPage, {
        id: id
     });
+  }
+
+  ngOnDestroy(){
+    this.areaSubscription.unsubscribe();
+    this.cragsSubscription.unsubscribe();
   }
 
 }

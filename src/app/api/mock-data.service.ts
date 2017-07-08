@@ -46,12 +46,4 @@ export class MockDataService {
     return this.mockData.routes;
   }
 
-  getTicklistedRoutes(){
-    return this.mockData.routes.filter((route)=>{return route.ticklisted});
-  }
-
-  getSentRoutes(){
-    return this.mockData.routes.filter((route)=>{return route.sent});
-  }
-
 }
