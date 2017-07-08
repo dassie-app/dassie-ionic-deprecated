@@ -14,10 +14,6 @@ import { CragPage } from '../pages/crag/crag';
 import { RoutePage } from '../pages/route/route';
 import { SearchRoutesPage } from '../pages/search-routes/search-routes';
 
-import { MockDataService } from './api/mock-data.service';
-import { MockAreasService } from './api/mock-areas.service';
-import { MockCragsService } from './api/mock-crags.service';
-import { MockRoutesService } from './api/mock-routes.service';
 import { ApiService } from './api/api.service';
 
 import { SortRoutesPipe } from '../pipes/sort-routes/sort-routes';
@@ -63,10 +59,6 @@ export const firebaseConfig = {
     DeviceFeedback,
     AngularFireDatabase,
     ApiService,
-    MockDataService,
-    MockAreasService,
-    MockCragsService,
-    MockRoutesService,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
