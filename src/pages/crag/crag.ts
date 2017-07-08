@@ -12,7 +12,7 @@ import { AreaPage } from '../area/area';
   selector: 'page-crag',
   templateUrl: 'crag.html',
 })
-export class CragPage implements OnDestroy{
+export class CragPage implements OnDestroy {
 
   cragSubscription: Subscription;
   routesSubscription: Subscription;
@@ -22,8 +22,8 @@ export class CragPage implements OnDestroy{
   crag;
   area;
   routes;
-  sortProperty: string =  'order';
-  sortAscending: boolean  = true;
+  sortProperty: string = 'order';
+  sortAscending: boolean = true;
   routeOrder = 'Left to Right';
 
   constructor(
@@ -32,7 +32,7 @@ export class CragPage implements OnDestroy{
     private apiService: ApiService,
     private actionSheetCtrl: ActionSheetController,
     private deviceFeedback: DeviceFeedback
-  ){
+  ) {
     this.cragId = this.navParams.get('id');
 
     this.cragSubscription = this.apiService.getCragById(this.cragId).subscribe((crag) => {
@@ -41,69 +41,67 @@ export class CragPage implements OnDestroy{
 
     this.routesSubscription = this.apiService.getRoutesByCrag(this.cragId).subscribe((routes) => {
       this.routes = routes;
+      this.routes.map(route => {
+        route.starArray = [];
+        for (let i = 0; i < route.stars; i++) {
+          route.starArray.push(0);
+        }
+      });
     });
 
     this.areaSubscription = this.apiService.getAreaById(this.crag.area).subscribe((area) => {
       this.area = area;
     });
-
-    //this.area = this.apiService.getAreaById(this.crag.area);
-    this.routes.map(route=>{
-      route.starArray = [];
-      for (let i = 0; i < route.stars; i++){
-        route.starArray.push(0);
-      }
-    })
   }
 
   goToRoute(id: number) {
-     this.navCtrl.push(RoutePage, {
-       id: id
-    });
-  }
-  
-  goToArea(id: number) {
-     this.navCtrl.push(AreaPage, {
-       id: id
+    this.navCtrl.push(RoutePage, {
+      id: id
     });
   }
 
-  openOrderActionSheet(){
+  goToArea(id: number) {
+    this.navCtrl.push(AreaPage, {
+      id: id
+    });
+  }
+
+  openOrderActionSheet() {
     this.deviceFeedback.haptic(1);
     let actionSheet = this.actionSheetCtrl.create({
       title: "Order Routes by",
       buttons: [
         {
           text: 'Left to Right',
-          handler: ()=>{
+          handler: () => {
             this.sortProperty = 'order';
             this.sortAscending = true;
           }
         },
         {
           text: 'Right to Left',
-          handler: ()=>{
+          handler: () => {
             this.sortProperty = 'order';
             this.sortAscending = false;
           }
         },
         {
           text: 'Grade - Low to High',
-          handler: ()=>{
+          handler: () => {
             this.sortProperty = 'grade';
             this.sortAscending = true;
           }
         },
         {
           text: 'Grade - High to Low',
-          handler: ()=>{
-           this.sortProperty = 'grade';
+          handler: () => {
+            this.sortProperty = 'grade';
             this.sortAscending = false;
           }
         },
         {
           text: 'Star Rating',
-          handler: ()=>{
+          handler: () => {
             this.sortProperty = 'stars';
             this.sortAscending = false;
           }
@@ -113,7 +111,7 @@ export class CragPage implements OnDestroy{
     actionSheet.present();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.cragSubscription.unsubscribe();
     this.routesSubscription.unsubscribe();
     this.areaSubscription.unsubscribe();
