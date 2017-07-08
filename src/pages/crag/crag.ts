@@ -16,6 +16,7 @@ export class CragPage implements OnDestroy{
 
   cragSubscription: Subscription;
   routesSubscription: Subscription;
+  areaSubscription: Subscription;
 
   cragId;
   crag;
@@ -40,6 +41,10 @@ export class CragPage implements OnDestroy{
 
     this.routesSubscription = this.apiService.getRoutesByCrag(this.cragId).subscribe((routes) => {
       this.routes = routes;
+    });
+
+    this.areaSubscription = this.apiService.getAreaById(this.crag.area).subscribe((area) => {
+      this.area = area;
     });
 
     //this.area = this.apiService.getAreaById(this.crag.area);
@@ -111,5 +116,6 @@ export class CragPage implements OnDestroy{
   ngOnDestroy(){
     this.cragSubscription.unsubscribe();
     this.routesSubscription.unsubscribe();
+    this.areaSubscription.unsubscribe();
   }
 }
