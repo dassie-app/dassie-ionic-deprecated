@@ -20,7 +20,20 @@
         {{route?.grade}}
     </ion-card-header>
     <ion-card-content>
+
       {{ route?.description }}
+
+      <ion-row padding-top>
+        <ion-col>
+          <b>{{ route?.fa_date }} - {{ route?.fa_text}}</b>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          {{ route?.notes }}
+        </ion-col>
+      </ion-row>
+
     </ion-card-content>
   </ion-card>
 </ion-content>
