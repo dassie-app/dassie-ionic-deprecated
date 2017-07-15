@@ -9,7 +9,7 @@
 <ion-content padding>
   
   <h3>Areas</h3>
-
+  <h4 *ngIf="!areas">Loading...</h4>
   <ion-card *ngFor="let area of areas" (click)="goToArea(area.id)">
     <ion-card-header>
       {{ area.name }}

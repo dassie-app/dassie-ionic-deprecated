@@ -16,10 +16,11 @@ export class AreaPage implements OnDestroy {
   areaSubscription : Subscription;
   cragsSubscription: Subscription;
   areaId;
-  area : Area = new Area();
+  area;
   crags;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private apiService: ApiService) {
+
     this.areaId = parseInt(this.navParams.get('id'));
 
     this.areaSubscription =  this.apiService.getAreaById(this.areaId).subscribe((area) => {

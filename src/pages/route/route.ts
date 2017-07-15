@@ -21,25 +21,37 @@ export class RoutePage implements OnDestroy {
   route;
   crag;
   area;
+  starArray;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private apiService: ApiService) {
     this.routeId = this.navParams.get('id');
 
     this.routeSubscription = this.apiService.getRouteById(this.routeId).subscribe((route) => {
       this.route = route;
-      this.route.starArray = [];
+      this.starArray = [];
       for (let i = 0; i < this.route.stars; i++) {
-        this.route.starArray.push(0);
+        this.starArray.push(0);
       }
+      
+      if (this.cragSubscription) {
+        this.cragSubscription.unsubscribe();
+      }
+
+      this.cragSubscription = this.apiService.getCragById(this.route.crag).subscribe((crag) => {
+        this.crag = crag;
+
+        if (this.areaSubscription) {
+          this.areaSubscription.unsubscribe();
+        }
+
+        this.areaSubscription = this.apiService.getAreaById(this.crag.area).subscribe((area) => {
+          this.area = area;
+        });
+
+      });
+
     });
 
-    this.cragSubscription = this.apiService.getCragById(this.route.crag).subscribe((crag) => {
-      this.crag = crag;
-    });
-
-    this.areaSubscription = this.apiService.getAreaById(this.crag.area).subscribe((area) => {
-      this.area = area;
-    });
   }
 
   goToCrag(id: number) {
@@ -52,6 +64,10 @@ export class RoutePage implements OnDestroy {
     this.navCtrl.push(AreaPage, {
       id: id
     });
+  }
+
+  ngOnInit() {
+    this.area = {};
   }
 
   ngOnDestroy() {

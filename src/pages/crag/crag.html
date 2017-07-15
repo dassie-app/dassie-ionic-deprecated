@@ -2,7 +2,7 @@
   <ion-navbar color="primary">
     <ion-row justify-content-between>
       <ion-title>
-        {{crag.name}}
+        {{crag?.name}}
       </ion-title>
       <button ion-fab mini color="light" (click)="openOrderActionSheet()"><ion-icon name="settings"></ion-icon></button>
     </ion-row>
@@ -12,20 +12,20 @@
 <ion-content padding>
   <ion-card>
     <ion-card-header>
-      {{ crag.name }}
+      {{ crag?.name }}
     </ion-card-header>
 
     <ion-card-content>
-      {{ crag.description }}
+      {{ crag?.description }}
     </ion-card-content>
   </ion-card>
 
-  <h3>Routes at {{ crag.name }}</h3>
+  <h3>Routes at {{ crag?.name }}</h3>
   <h6>Order: {{ routeOrder }}</h6>
 
   <route-card *ngFor="let route of routes | sortRoutes: sortProperty: sortAscending " (click)="goToRoute(route.id)"  [route]="route">
   </route-card>
   <button ion-button color="primary" clear (click)="goToArea(area.id)">
-    <ion-icon name="arrow-back" padding-right></ion-icon>{{ area.name }}
+    <ion-icon name="arrow-back" padding-right></ion-icon>{{ area?.name }}
   </button>
 </ion-content>

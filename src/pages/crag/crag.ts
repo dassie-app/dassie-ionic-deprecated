@@ -22,8 +22,8 @@ export class CragPage implements OnDestroy {
   areaSubscription: Subscription;
 
   cragId;
-  crag : any = {};
-  area : any = {};
+  crag;
+  area;
   routes;
   sortProperty: string = 'order';
   sortAscending: boolean = true;
@@ -40,14 +40,18 @@ export class CragPage implements OnDestroy {
 
     this.cragSubscription = this.apiService.getCragById(this.cragId).subscribe((crag) => {
       this.crag = crag;
+
+      if (this.areaSubscription) {
+        this.areaSubscription.unsubscribe();
+      }
+      
+      this.areaSubscription = this.apiService.getAreaById(this.crag.area).subscribe((area) => {
+        this.area = area;
+      });
     });
 
     this.routesSubscription = this.apiService.getRoutesByCrag(this.cragId).subscribe((routes) => {
       this.routes = routes;
-    });
-
-    this.areaSubscription = this.apiService.getAreaById(this.crag.area).subscribe((area) => {
-      //this.area = area;
     });
   }
 

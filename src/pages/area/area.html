@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      {{area.name }}
+      {{area?.name }}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,15 +9,15 @@
 <ion-content padding>
   <ion-card>
     <ion-card-header>
-      {{ area.name }}
+      {{ area?.name }}
     </ion-card-header>
 
     <ion-card-content>
-      {{ area.description }}
+      {{ area?.description }}
     </ion-card-content>
   </ion-card>
 
-  <h3>Crags in {{area.name }}</h3>
+  <h3>Crags in {{area?.name }}</h3>
 
   <ion-card *ngFor="let crag of crags" (click)="goToCrag(crag.id)">
     <ion-card-header>
