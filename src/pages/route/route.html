@@ -7,13 +7,11 @@
 </ion-header>
 
 <ion-content padding>
+  <h1>{{ route.name }}</h1>
   <ion-card>
-    <ion-card-header class="route-card-header">
-      <span>{{ route.name }}</span>
-      <span>
+    <ion-card-header text-right>
         <ion-icon *ngFor="let star of route.starArray" name="star"></ion-icon>
         {{route.grade}}
-      </span>
     </ion-card-header>
     <ion-card-content>
       {{ route.description }}
