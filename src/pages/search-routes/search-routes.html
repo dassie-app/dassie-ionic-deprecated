@@ -4,7 +4,6 @@
       <ion-title>
         Search Routes
       </ion-title>
-      <button ion-fab mini color="light" (click)="openOrderActionSheet()"><ion-icon name="settings"></ion-icon></button>
     </ion-row>
   </ion-navbar>
 </ion-header>
@@ -33,3 +32,7 @@
   <route-card *ngFor="let route of routes | filterRoutes: selectedGrade : searchTerm : selectedStars | sortRoutes : sortProperty : sortAscending" (click)="goToRoute(route.id)"  [route]="route">
   </route-card>
 </ion-content>
+
+<ion-fab bottom left>
+  <button ion-fab color="light" (click)="openOrderActionSheet()"><ion-icon name="settings"></ion-icon></button>
+</ion-fab>
