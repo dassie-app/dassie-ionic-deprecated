@@ -1,9 +1,16 @@
 <ion-card>
-  <ion-card-header class="route-card-header">
-    <span>{{ route.name }}</span>
-    <span>
+  <ion-card-header>
+    {{ route.name }}
+  </ion-card-header>
+  <ion-card-content>
+    <ion-row>
+      <ion-col text-left>
+        {{ route.fa_date }} - {{ route.fa_text}}
+      </ion-col>
+      <ion-col text-right>
         <ion-icon *ngFor="let star of starArray" name="star"></ion-icon>
         {{route.grade}}
-      </span>
-  </ion-card-header>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
 </ion-card>
