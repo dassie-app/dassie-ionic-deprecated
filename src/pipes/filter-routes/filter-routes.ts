@@ -7,6 +7,9 @@ export class FilterRoutesPipe implements PipeTransform {
   returnRoutes: any[];
   
   transform(routes: any[], grade : any, searchTerm : string, stars: any) {
+    if (!routes){
+      return;
+    }
     this.returnRoutes = routes;
 
     let searchTermValid;

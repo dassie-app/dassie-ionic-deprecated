@@ -47,7 +47,7 @@ export class CragPage implements OnDestroy {
     });
 
     this.areaSubscription = this.apiService.getAreaById(this.crag.area).subscribe((area) => {
-      this.area = area;
+      //this.area = area;
     });
   }
 
