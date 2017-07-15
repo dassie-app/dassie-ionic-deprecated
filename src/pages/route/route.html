@@ -7,6 +7,12 @@
 </ion-header>
 
 <ion-content padding>
+  <button ion-button color="primary" clear (click)="goToArea(area.id)">
+    <ion-icon name="arrow-back" padding-right></ion-icon>{{ area?.name }}
+  </button>
+  <button ion-button color="secondary" clear (click)="goToCrag(crag.id)">
+    <ion-icon name="arrow-back" padding-right></ion-icon>{{ crag?.name }}
+  </button>
   <h1>{{ route?.name }}</h1>
   <ion-card>
     <ion-card-header text-right>
@@ -17,10 +23,4 @@
       {{ route?.description }}
     </ion-card-content>
   </ion-card>
-  <button ion-button color="primary" clear (click)="goToArea(area.id)">
-    <ion-icon name="arrow-back" padding-right></ion-icon>{{ area?.name }}
-  </button>
-  <button ion-button color="secondary" clear (click)="goToCrag(crag.id)">
-    <ion-icon name="arrow-back" padding-right></ion-icon>{{ crag?.name }}
-  </button>
 </ion-content>
