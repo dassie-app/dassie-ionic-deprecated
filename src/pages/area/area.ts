@@ -6,6 +6,8 @@ import { ApiService } from '../../app/api/api.service';
 
 import { CragPage } from '../crag/crag';
 
+import {Area} from '../../types/area';
+
 @Component({
   selector: 'page-area',
   templateUrl: 'area.html',
@@ -14,13 +16,11 @@ export class AreaPage implements OnDestroy {
   areaSubscription : Subscription;
   cragsSubscription: Subscription;
   areaId;
-  area;
+  area : Area = new Area();
   crags;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private apiService: ApiService) {
     this.areaId = parseInt(this.navParams.get('id'));
-    this.area = this.apiService.getAreaById(this.areaId);
-    this.crags = this.apiService.getCragsByArea(this.areaId);
 
     this.areaSubscription =  this.apiService.getAreaById(this.areaId).subscribe((area) => {
       this.area = area;

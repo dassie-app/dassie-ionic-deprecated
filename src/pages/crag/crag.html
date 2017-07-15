@@ -23,7 +23,7 @@
   <h3>Routes at {{ crag.name }}</h3>
   <h6>Order: {{ routeOrder }}</h6>
 
-  <route-card *ngFor="let route of routes | sortRoutes: sortProperty: sortAscending" (click)="goToRoute(route.id)"  [route]="route">
+  <route-card *ngFor="let route of routes | sortRoutes: sortProperty: sortAscending " (click)="goToRoute(route.id)"  [route]="route">
   </route-card>
   <button ion-button color="primary" clear (click)="goToArea(area.id)">
     <ion-icon name="arrow-back" padding-right></ion-icon>{{ area.name }}

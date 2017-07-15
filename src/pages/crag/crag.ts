@@ -8,6 +8,9 @@ import { ApiService } from '../../app/api/api.service';
 import { RoutePage } from '../route/route';
 import { AreaPage } from '../area/area';
 
+import { Area } from '../../types/area';
+import { Crag } from '../../types/crag';
+
 @Component({
   selector: 'page-crag',
   templateUrl: 'crag.html',
@@ -19,8 +22,8 @@ export class CragPage implements OnDestroy {
   areaSubscription: Subscription;
 
   cragId;
-  crag;
-  area;
+  crag : any = {};
+  area : any = {};
   routes;
   sortProperty: string = 'order';
   sortAscending: boolean = true;
@@ -41,12 +44,6 @@ export class CragPage implements OnDestroy {
 
     this.routesSubscription = this.apiService.getRoutesByCrag(this.cragId).subscribe((routes) => {
       this.routes = routes;
-      this.routes.map(route => {
-        route.starArray = [];
-        for (let i = 0; i < route.stars; i++) {
-          route.starArray.push(0);
-        }
-      });
     });
 
     this.areaSubscription = this.apiService.getAreaById(this.crag.area).subscribe((area) => {
