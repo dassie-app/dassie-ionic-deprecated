@@ -18,6 +18,7 @@ import { ApiService } from './api/api.service';
 
 import { SortRoutesPipe } from '../pipes/sort-routes/sort-routes';
 import { FilterRoutesPipe } from '../pipes/filter-routes/filter-routes';
+import { RouteCardComponent } from '../components/route-card/route-card';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAER4X8D21xgEAk3KJO2dvtkI249vIkw1w",
@@ -37,7 +38,8 @@ export const firebaseConfig = {
     RoutePage,
     SearchRoutesPage,
     SortRoutesPipe,
-    FilterRoutesPipe
+    FilterRoutesPipe,
+    RouteCardComponent
   ],
   imports: [
     BrowserModule,

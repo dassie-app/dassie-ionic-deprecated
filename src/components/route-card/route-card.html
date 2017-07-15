@@ -1,0 +1,9 @@
+<ion-card>
+  <ion-card-header class="route-card-header">
+    <span>{{ route.name }}</span>
+    <span>
+        <ion-icon *ngFor="let star of starArray" name="star"></ion-icon>
+        {{route.grade}}
+      </span>
+  </ion-card-header>
+</ion-card>
