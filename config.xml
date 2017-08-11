@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.dassie.bovenguide" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Boven Route Guide</name>
+<widget id="com.dassie.dassie" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Dassie</name>
     <description>A guide to rock climbing in Waterval Boven</description>
     <author email="hello@dassie.co" href="http://dassie.co/">Dassie</author>
     <content src="index.html" />
