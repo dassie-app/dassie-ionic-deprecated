@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 
 import { ApiService } from '../../app/api/api.service';
 
-import { AreaPage } from '../area/area';
+import { CragPage } from '../crag/crag';
 
 @Component({
   selector: 'page-home',
@@ -11,16 +11,16 @@ import { AreaPage } from '../area/area';
 })
 export class HomePage {
 
-  areas;
+  crags;
 
   constructor(public navCtrl: NavController, private apiService: ApiService) {
-    this.apiService.getAllAreas().subscribe((areas) => {
-      this.areas = areas;
+    this.apiService.getAllCrags().subscribe((crags) => {
+      this.crags = crags;
     })
   }
 
-  goToArea(id: number) {
-     this.navCtrl.push(AreaPage, {
+  goToCrag(id: number) {
+     this.navCtrl.push(CragPage, {
        id: id
     });
   }

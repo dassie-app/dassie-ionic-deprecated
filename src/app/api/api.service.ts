@@ -72,6 +72,18 @@ export class ApiService {
     return routesByCrag;
   }
 
+  getAllCrags() : Observable <any[]> {
+    const allCrags = Observable.create((observer: Observer<any>) => {
+      this.storage.get('crags').then((crags) => {
+        observer.next(crags);
+      });
+      this.cragsDB.subscribe((crags) => {
+        observer.next(crags);
+      });
+    });
+    return allCrags;
+  }
+
   getCragsByArea(areaId: number): Observable<any> {
     const cragsByAreaObservable = Observable.create((observer: Observer<any>) => {
       this.storage.get('crags').then((crags) => {

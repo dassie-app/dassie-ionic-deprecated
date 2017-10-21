@@ -8,16 +8,12 @@
 
 <ion-content padding>
   
-  <h3>Areas</h3>
-  <h4 *ngIf="!areas">Loading...</h4>
-  <ion-card *ngFor="let area of areas" (click)="goToArea(area.id)">
+  <h3>Crags</h3>
+  <h4 *ngIf="!crags">Loading...</h4>
+  <ion-card *ngFor="let crag of crags" (click)="goToCrag(crag.id)">
     <ion-card-header>
-      {{ area.name }}
+      {{ crag.name }}
     </ion-card-header>
-
-    <ion-card-content>
-      Area Short Info
-    </ion-card-content>
   </ion-card>
 
 </ion-content>
