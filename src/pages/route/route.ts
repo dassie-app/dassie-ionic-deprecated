@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs/subscription';
 import { ApiService } from '../../app/api/api.service';
 
 import { CragPage } from '../crag/crag';
-import { AreaPage } from '../area/area';
 
 @Component({
   selector: 'page-route',
@@ -32,22 +31,13 @@ export class RoutePage implements OnDestroy {
       for (let i = 0; i < this.route.stars; i++) {
         this.starArray.push(0);
       }
-      
+
       if (this.cragSubscription) {
         this.cragSubscription.unsubscribe();
       }
 
-      this.cragSubscription = this.apiService.getCragById(this.route.crag).subscribe((crag) => {
+      this.cragSubscription = this.apiService.getCragById(this.route.parent_id).subscribe((crag) => {
         this.crag = crag;
-
-        if (this.areaSubscription) {
-          this.areaSubscription.unsubscribe();
-        }
-
-        this.areaSubscription = this.apiService.getAreaById(this.crag.area).subscribe((area) => {
-          this.area = area;
-        });
-
       });
 
     });
@@ -60,12 +50,6 @@ export class RoutePage implements OnDestroy {
     });
   }
 
-  goToArea(id: number) {
-    this.navCtrl.push(AreaPage, {
-      id: id
-    });
-  }
-
   ngOnInit() {
     this.area = {};
   }
@@ -73,7 +57,6 @@ export class RoutePage implements OnDestroy {
   ngOnDestroy() {
     this.cragSubscription.unsubscribe();
     this.routeSubscription.unsubscribe();
-    this.areaSubscription.unsubscribe();
   }
 
 }
