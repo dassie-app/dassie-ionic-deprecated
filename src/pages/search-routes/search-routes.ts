@@ -1,7 +1,6 @@
 import { Component, OnDestroy} from '@angular/core';
 import { NavController, ActionSheetController } from 'ionic-angular';
 import { Subscription } from 'rxjs/Subscription';
-import { DeviceFeedback } from '@ionic-native/device-feedback';
 
 import { ApiService } from '../../app/api/api.service';
 
@@ -27,7 +26,6 @@ export class SearchRoutesPage implements OnDestroy{
     public navCtrl: NavController,
     private apiService: ApiService,
     private actionSheetCtrl: ActionSheetController,
-    private deviceFeedback: DeviceFeedback
   ){
     this.routesSubscription = this.apiService.getAllRoutes().subscribe((routes) => {
       this.routes = routes;
@@ -47,7 +45,6 @@ export class SearchRoutesPage implements OnDestroy{
   }
 
   openOrderActionSheet(){
-    this.deviceFeedback.haptic(1);
     let actionSheet = this.actionSheetCtrl.create({
       title: "Order Routes by",
       buttons: [

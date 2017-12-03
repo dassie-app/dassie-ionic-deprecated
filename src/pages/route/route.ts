@@ -57,7 +57,6 @@ export class RoutePage implements OnDestroy {
   ngOnDestroy() {
     this.cragSubscription.unsubscribe();
     this.routeSubscription.unsubscribe();
-    this.areaSubscription.unsubscribe();
   }
 
 }
