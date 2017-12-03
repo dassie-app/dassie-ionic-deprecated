@@ -1,35 +1,31 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Storage } from '@ionic/storage';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 
 
 @Injectable()
 export class ApiService {
+  apiUrl = 'http://localhost:3000/api/v1/';
+  constructor(private http: Http, private storage: Storage) {
 
-  routesDB: FirebaseListObservable<any[]>;
-  cragsDB: FirebaseListObservable<any[]>;
-  areasDB: FirebaseListObservable<any[]>;
-
-  constructor(private db: AngularFireDatabase, private storage: Storage) {
-
-    this.routesDB = db.list('/routes');
-    this.cragsDB = db.list('/crags');
-    this.areasDB = db.list('/areas');
-
-    this.routesDB.subscribe((routes) => {
+    this.http.get(this.apiUrl + 'routes').map((response) => {
+      return response.json()
+    }).subscribe((routes) => {
+      console.log(routes);
       this.storage.set('routes', routes);
     });
-    
-    this.cragsDB.subscribe((crags) => {
-      this.storage.set('crags', crags);      
+
+    this.http.get(this.apiUrl + 'crags').map((response) => {
+      return response.json()
+    }).subscribe((crags) => {
+      console.log(crags);
+      this.storage.set('crags', crags);
     });
 
-    this.areasDB.subscribe((areas) => {
-      this.storage.set('areas', areas);      
-    });
   }
 
   getAllRoutes() {
@@ -37,20 +33,13 @@ export class ApiService {
       this.storage.get('routes').then((routes) => {
         observer.next(routes);
       });
-      this.routesDB.subscribe((routes) => {
-        observer.next(routes);
-      });
     });
     return allRoutes;
   }
 
-  getRouteById(id: number): Observable<any> {
+  getRouteById(id: string): Observable<any> {
     const routeById = Observable.create((observer: Observer<any>) => {
       this.storage.get('routes').then((routes) => {
-        let route = routes.filter((route)=>{return route.id == id})[0];
-        observer.next(route);
-      });
-      this.routesDB.subscribe((routes) => {
         let route = routes.filter((route)=>{return route.id == id})[0];
         observer.next(route);
       });
@@ -58,14 +47,10 @@ export class ApiService {
     return routeById;
   }
 
-  getRoutesByCrag(cragId: number): Observable<any> {
+  getRoutesByCrag(cragId: string): Observable<any> {
     const routesByCrag = Observable.create((observer: Observer<any>) => {
       this.storage.get('routes').then((routes) => {
-        let routesByCrag = routes.filter((route)=>{return route.crag == cragId});
-        observer.next(routesByCrag);
-      });
-      this.routesDB.subscribe((routes) => {
-        let routesByCrag = routes.filter((route)=>{return route.crag == cragId});
+        let routesByCrag = routes.filter((route)=>{return route.parent_id == cragId});
         observer.next(routesByCrag);
       });
     });
@@ -77,66 +62,19 @@ export class ApiService {
       this.storage.get('crags').then((crags) => {
         observer.next(crags);
       });
-      this.cragsDB.subscribe((crags) => {
-        observer.next(crags);
-      });
     });
     return allCrags;
   }
 
-  getCragsByArea(areaId: number): Observable<any> {
-    const cragsByAreaObservable = Observable.create((observer: Observer<any>) => {
-      this.storage.get('crags').then((crags) => {
-        let cragsByArea = crags.filter((crag)=>{return crag.area == areaId});
-        observer.next(cragsByArea);
-      });
-      this.cragsDB.subscribe((crags) => {
-        let cragsByArea = crags.filter((crag)=>{return crag.area == areaId});
-        observer.next(cragsByArea);
-      });
-    });
-    return cragsByAreaObservable;
-  }
-
-  getCragById(id: number): Observable<any> {
+  getCragById(id: string): Observable<any> {
     const cragById = Observable.create((observer: Observer<any>) => {
       this.storage.get('crags').then((crags) => {
-        let crag = crags.filter((crag) => { return crag.id == id})[0];
-        observer.next(crag);
-      });
-      this.cragsDB.subscribe((crags) => {
         let crag = crags.filter((crag) => { return crag.id == id})[0];
         observer.next(crag);
       });
     });
 
     return cragById;
-  }
-
-  getAllAreas() : Observable <any[]> {
-    const allAreas = Observable.create((observer: Observer<any>) => {
-      this.storage.get('areas').then((areas) => {
-        observer.next(areas);
-      });
-      this.areasDB.subscribe((areas) => {
-        observer.next(areas);
-      });
-    });
-    return allAreas;
-  }
-
-  getAreaById(id): Observable<any> {
-    const areaById = Observable.create((observer: Observer<any>) => {
-      this.storage.get('areas').then((areas) => {
-        let area = areas.filter((area)=>{return area.id == id})[0];
-        observer.next(area);
-      });
-      this.areasDB.subscribe((areas) => {
-        let area = areas.filter((area)=>{return area.id == id})[0];
-        observer.next(area);
-      });
-    });
-    return areaById;
   }
 
 }
