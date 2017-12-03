@@ -1,14 +1,11 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
-import { DeviceFeedback } from '@ionic-native/device-feedback';
 import { Subscription } from 'rxjs/Subscription';
 
 import { ApiService } from '../../app/api/api.service';
 
 import { RoutePage } from '../route/route';
-import { AreaPage } from '../area/area';
 
-import { Area } from '../../types/area';
 import { Crag } from '../../types/crag';
 
 @Component({
@@ -34,20 +31,12 @@ export class CragPage implements OnDestroy {
     public navParams: NavParams,
     private apiService: ApiService,
     private actionSheetCtrl: ActionSheetController,
-    private deviceFeedback: DeviceFeedback
   ) {
     this.cragId = this.navParams.get('id');
 
     this.cragSubscription = this.apiService.getCragById(this.cragId).subscribe((crag) => {
       this.crag = crag;
 
-      if (this.areaSubscription) {
-        this.areaSubscription.unsubscribe();
-      }
-      
-      this.areaSubscription = this.apiService.getAreaById(this.crag.area).subscribe((area) => {
-        this.area = area;
-      });
     });
 
     this.routesSubscription = this.apiService.getRoutesByCrag(this.cragId).subscribe((routes) => {
@@ -61,14 +50,7 @@ export class CragPage implements OnDestroy {
     });
   }
 
-  goToArea(id: number) {
-    this.navCtrl.push(AreaPage, {
-      id: id
-    });
-  }
-
   openOrderActionSheet() {
-    this.deviceFeedback.haptic(1);
     let actionSheet = this.actionSheetCtrl.create({
       title: "Order Routes by",
       buttons: [
@@ -115,6 +97,5 @@ export class CragPage implements OnDestroy {
   ngOnDestroy() {
     this.cragSubscription.unsubscribe();
     this.routesSubscription.unsubscribe();
-    this.areaSubscription.unsubscribe();
   }
 }
