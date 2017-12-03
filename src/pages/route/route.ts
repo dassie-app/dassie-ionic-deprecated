@@ -36,7 +36,7 @@ export class RoutePage implements OnDestroy {
         this.cragSubscription.unsubscribe();
       }
 
-      this.cragSubscription = this.apiService.getCragById(this.route.crag).subscribe((crag) => {
+      this.cragSubscription = this.apiService.getCragById(this.route.parent_id).subscribe((crag) => {
         this.crag = crag;
       });
 

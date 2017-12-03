@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ApiService {
-  apiUrl = 'http://localhost:3000/api/v1/';
+  apiUrl = 'http://dassie.herokuapp.com/api/v1/';
   constructor(private http: Http, private storage: Storage) {
 
     this.http.get(this.apiUrl + 'routes').map((response) => {
