@@ -31,7 +31,7 @@ export class ApiService {
   getAllRoutes() {
     const allRoutes = Observable.create((observer: Observer<any>) => {
       this.storage.get('routes').then((routes) => {
-        if ( routes ) {
+        if(routes) {
           observer.next(routes);
         }
       });
@@ -48,7 +48,14 @@ export class ApiService {
     const routeById = Observable.create((observer: Observer<any>) => {
       this.storage.get('routes').then((routes) => {
         let route = routes.filter((route)=>{return route.id == id})[0];
-        observer.next(route);
+        if(route) {
+          observer.next(route);
+        }
+      });
+      this.http.get(this.apiUrl + 'routes/' + id).map((response) => {
+        return response.json();
+      }).subscribe((route) => {
+        observer.next(route)
       });
     });
     return routeById;
@@ -85,6 +92,11 @@ export class ApiService {
       this.storage.get('crags').then((crags) => {
         let crag = crags.filter((crag) => { return crag.id == id})[0];
         observer.next(crag);
+      });
+      this.http.get(this.apiUrl + 'crags/' + id).map((response) => {
+        return response.json();
+      }).subscribe((crag) => {
+        observer.next(crag)
       });
     });
 
