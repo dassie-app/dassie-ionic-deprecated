@@ -31,10 +31,6 @@ export class RoutePage implements OnDestroy {
         this.starArray.push(0);
       }
 
-      if (this.cragSubscription) {
-        this.cragSubscription.unsubscribe();
-      }
-
       this.cragSubscription = this.apiService.getCragById(this.route.parent_id).subscribe((crag) => {
         this.crag = crag;
       });
@@ -47,10 +43,6 @@ export class RoutePage implements OnDestroy {
     this.navCtrl.push(CragPage, {
       id: id
     });
-  }
-
-  ngOnInit() {
-    this.area = {};
   }
 
   ngOnDestroy() {

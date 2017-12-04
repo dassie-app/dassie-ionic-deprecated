@@ -33,6 +33,11 @@ export class ApiService {
       this.storage.get('routes').then((routes) => {
         observer.next(routes);
       });
+      this.http.get(this.apiUrl + 'routes').map((response) => {
+        return response.json()
+      }).subscribe((routes) => {
+        observer.next(routes);
+      });
     });
     return allRoutes;
   }
@@ -60,6 +65,11 @@ export class ApiService {
   getAllCrags() : Observable <any[]> {
     const allCrags = Observable.create((observer: Observer<any>) => {
       this.storage.get('crags').then((crags) => {
+        observer.next(crags);
+      });
+      this.http.get(this.apiUrl + 'crags').map((response) => {
+        return response.json()
+      }).subscribe((crags) => {
         observer.next(crags);
       });
     });
