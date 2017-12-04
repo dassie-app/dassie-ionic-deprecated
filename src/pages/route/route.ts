@@ -19,7 +19,6 @@ export class RoutePage implements OnDestroy {
   routeId;
   route;
   crag;
-  area;
   starArray;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private apiService: ApiService) {

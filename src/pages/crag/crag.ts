@@ -20,7 +20,6 @@ export class CragPage implements OnDestroy {
 
   cragId;
   crag;
-  area;
   routes;
   sortProperty: string = 'order';
   sortAscending: boolean = true;
