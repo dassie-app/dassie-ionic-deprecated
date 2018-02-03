@@ -15,14 +15,12 @@ export class ApiService {
     this.http.get(this.apiUrl + 'routes').map((response) => {
       return response.json()
     }).subscribe((routes) => {
-      console.log(routes);
       this.storage.set('routes', routes);
     });
 
     this.http.get(this.apiUrl + 'crags').map((response) => {
       return response.json()
     }).subscribe((crags) => {
-      console.log(crags);
       this.storage.set('crags', crags);
     });
 
