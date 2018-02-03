@@ -1,4 +1,4 @@
-import { Component, OnDestroy} from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, ActionSheetController } from 'ionic-angular';
 
 import { ApiService } from '../../app/api/api.service';

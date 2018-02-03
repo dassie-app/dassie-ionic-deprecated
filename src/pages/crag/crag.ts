@@ -13,7 +13,7 @@ import { Crag } from '../../types/crag';
 export class CragPage {
 
   cragId;
-  crag;
+  crag: Crag;
   routes;
   sortProperty: string = 'order';
   sortAscending: boolean = true;
