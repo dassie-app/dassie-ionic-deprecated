@@ -1,6 +1,5 @@
 import { Component, OnDestroy} from '@angular/core';
 import { NavController, ActionSheetController } from 'ionic-angular';
-import { Subscription } from 'rxjs/Subscription';
 
 import { ApiService } from '../../app/api/api.service';
 
@@ -10,9 +9,8 @@ import { RoutePage } from '../route/route';
   selector: 'page-search-routes',
   templateUrl: 'search-routes.html',
 })
-export class SearchRoutesPage implements OnDestroy{
+export class SearchRoutesPage {
 
-  routesSubscription: Subscription;
   routes;
   selectedGrade: any = 'any';
   selectedStars = 'any';
@@ -27,15 +25,13 @@ export class SearchRoutesPage implements OnDestroy{
     private apiService: ApiService,
     private actionSheetCtrl: ActionSheetController,
   ){
-    this.routesSubscription = this.apiService.getAllRoutes().subscribe((routes) => {
-      this.routes = routes;
-      this.routes.map(route => {
-        route.starArray = [];
-        for (let i = 0; i < route.stars; i++) {
-          route.starArray.push(0);
-        }
-      })
-    });
+    this.routes = this.apiService.getAllRoutes();
+    this.routes.map(route => {
+      route.starArray = [];
+      for (let i = 0; i < route.stars; i++){
+        route.starArray.push(0);
+      }
+    })
   }
 
   goToRoute(id: number) {
@@ -72,9 +68,5 @@ export class SearchRoutesPage implements OnDestroy{
       ]
     });
     actionSheet.present();
-  }
-
-  ngOnDestroy(){
-    this.routesSubscription.unsubscribe();
   }
 }

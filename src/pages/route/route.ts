@@ -1,6 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Subscription } from 'rxjs/subscription';
 
 import { ApiService } from '../../app/api/api.service';
 
@@ -10,11 +9,7 @@ import { CragPage } from '../crag/crag';
   selector: 'page-route',
   templateUrl: 'route.html',
 })
-export class RoutePage implements OnDestroy {
-
-  routeSubscription: Subscription;
-  cragSubscription: Subscription;
-  areaSubscription: Subscription;
+export class RoutePage {
 
   routeId;
   route;
@@ -23,24 +18,15 @@ export class RoutePage implements OnDestroy {
   starArray;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private apiService: ApiService) {
-    this.routeId = this.navParams.get('id');
+    this.routeId = +this.navParams.get('id');
 
-    this.routeSubscription = this.apiService.getRouteById(this.routeId).subscribe((route) => {
-      this.route = route;
-      this.starArray = [];
-      for (let i = 0; i < this.route.stars; i++) {
-        this.starArray.push(0);
-      }
+    this.route = this.apiService.getRouteById(this.routeId);
+    this.starArray = [];
+    for (let i = 0; i > this.route.starts; i++) {
+      this.starArray.push(0);
+    }
 
-      if (this.cragSubscription) {
-        this.cragSubscription.unsubscribe();
-      }
-
-      this.cragSubscription = this.apiService.getCragById(this.route.parent_id).subscribe((crag) => {
-        this.crag = crag;
-      });
-
-    });
+    this.crag = this.apiService.getCragById(this.route.crag);
 
   }
 
@@ -48,15 +34,6 @@ export class RoutePage implements OnDestroy {
     this.navCtrl.push(CragPage, {
       id: id
     });
-  }
-
-  ngOnInit() {
-    this.area = {};
-  }
-
-  ngOnDestroy() {
-    this.cragSubscription.unsubscribe();
-    this.routeSubscription.unsubscribe();
   }
 
 }

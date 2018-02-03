@@ -1,7 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
-import { Subscription } from 'rxjs/Subscription';
-
 import { ApiService } from '../../app/api/api.service';
 
 import { RoutePage } from '../route/route';
@@ -12,15 +10,10 @@ import { Crag } from '../../types/crag';
   selector: 'page-crag',
   templateUrl: 'crag.html',
 })
-export class CragPage implements OnDestroy {
-
-  cragSubscription: Subscription;
-  routesSubscription: Subscription;
-  areaSubscription: Subscription;
+export class CragPage {
 
   cragId;
   crag;
-  area;
   routes;
   sortProperty: string = 'order';
   sortAscending: boolean = true;
@@ -32,16 +25,12 @@ export class CragPage implements OnDestroy {
     private apiService: ApiService,
     private actionSheetCtrl: ActionSheetController,
   ) {
-    this.cragId = this.navParams.get('id');
+    this.cragId = +this.navParams.get('id');
 
-    this.cragSubscription = this.apiService.getCragById(this.cragId).subscribe((crag) => {
-      this.crag = crag;
+    this.crag = this.apiService.getCragById(this.cragId);
 
-    });
+    this.routes = this.apiService.getRoutesByCrag(this.cragId);
 
-    this.routesSubscription = this.apiService.getRoutesByCrag(this.cragId).subscribe((routes) => {
-      this.routes = routes;
-    });
   }
 
   goToRoute(id: number) {
@@ -94,8 +83,4 @@ export class CragPage implements OnDestroy {
     actionSheet.present();
   }
 
-  ngOnDestroy() {
-    this.cragSubscription.unsubscribe();
-    this.routesSubscription.unsubscribe();
-  }
 }
